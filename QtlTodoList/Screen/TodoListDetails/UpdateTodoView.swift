@@ -9,9 +9,10 @@ import SwiftUI
 
 struct UpdateTodoView: View {
     // MARK: - Property Wrappers
-    @ObservedObject var todoViewModel = TodoViewModel.shared
-    @ObservedObject var todoListViewModel = TodoListViewModel.shared
-    @Environment(\.dismiss) private var dismiss
+    @StateObject private var todoViewModel = TodoViewModel.shared
+    @StateObject private var todoListViewModel = TodoListViewModel.shared
+//    @Environment(\.dismiss) private var dismiss
+    @Binding var isTodoUpdateDetails: Bool
     // MARK: - body
     var body: some View {
         ScrollView {
@@ -25,7 +26,8 @@ struct UpdateTodoView: View {
                     .padding()
                 Button {
                     self.todoListViewModel.updateFirestoreData(todo: todoViewModel.todo)
-                    dismiss()
+//                    dismiss()
+                    isTodoUpdateDetails.toggle()
                 } label: {
                     Text("完了")
                 }
@@ -38,6 +40,6 @@ struct UpdateTodoView: View {
 // MARK: - Preview
 struct UpdateTodoView_Previews: PreviewProvider {
     static var previews: some View {
-        UpdateTodoView()
+        UpdateTodoView(isTodoUpdateDetails: .constant(false))
     }
 }

@@ -12,7 +12,7 @@ struct AddTodoView: View {
     @State private var title = ""
     @State private var message = ""
     @Binding var isTodoAddDetails: Bool
-    @ObservedObject var todoListViewModel = TodoListViewModel.shared
+    @StateObject private var todoListViewModel = TodoListViewModel.shared
     // MARK: - body
     var body: some View {
         ScrollView {
