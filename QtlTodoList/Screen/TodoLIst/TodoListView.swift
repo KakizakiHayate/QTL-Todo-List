@@ -9,8 +9,8 @@ import SwiftUI
 
 struct TodoListView: View {
     // MARK: - Property Wrappers
-    @ObservedObject var todoListViewModel = TodoListViewModel.shared
-    @ObservedObject var todoViewModel = TodoViewModel.shared
+    @ObservedObject private var todoListViewModel = TodoListViewModel.shared
+    @ObservedObject private var todoViewModel = TodoViewModel.shared
     @State private var isTodoUpdateDetails = false
     // MARK: - body
     var body: some View {
@@ -28,7 +28,7 @@ struct TodoListView: View {
                                 self.isTodoUpdateDetails.toggle()
                             }
                             .navigationDestination(isPresented: $isTodoUpdateDetails) {
-                                UpdateTodoView()
+                                UpdateTodoView(isTodoUpdateDetails: $isTodoUpdateDetails)
                             }
                             .padding(.trailing)
                         Image(systemName: "trash")
