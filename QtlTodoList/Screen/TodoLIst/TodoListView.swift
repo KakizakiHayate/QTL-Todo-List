@@ -47,7 +47,6 @@ struct TodoListView: View {
 } // view
 
 // MARK: - Preview
-// 以下にpreviewのソースが入ります
 struct TodoListView_Previews: PreviewProvider {
     static var previews: some View {
         TodoListView()
