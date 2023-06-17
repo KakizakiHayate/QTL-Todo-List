@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct LoginView: View {
+    // MARK: - Property Wrappers
     @StateObject private var loginViewModel = LoginViewModel()
-    @State var isRegistrationView = false
+    @State private var isRegistrationView = false
+    // MARK: - body
     var body: some View {
         NavigationStack {
             VStack {
@@ -42,9 +44,10 @@ struct LoginView: View {
                 RegistrationView()
             }
         }
-    }
-}
+    } // body
+} // view
 
+// MARK: - Preview
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
