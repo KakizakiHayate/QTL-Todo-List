@@ -9,23 +9,37 @@ import SwiftUI
 
 struct LoginView: View {
     @StateObject private var loginViewModel = LoginViewModel()
+    @State var isRegistrationView = false
     var body: some View {
-        VStack {
-            TextField("メールアドレスを入力", text: $loginViewModel.email)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            TextField("パスワードを入力", text: $loginViewModel.password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            Button {
-                loginViewModel.login()
-            } label: {
-                Text("ログインする")
-            }.padding()
-            Button {
-                loginViewModel.googleLogin()
-            } label: {
-                Text("Googleログイン")
+        NavigationStack {
+            VStack {
+                TextField("メールアドレスを入力", text: $loginViewModel.email)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                TextField("パスワードを入力", text: $loginViewModel.password)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                Button {
+                    loginViewModel.login()
+                } label: {
+                    Text("ログインする")
+                }.padding()
+                Button {
+                    loginViewModel.googleLogin()
+                } label: {
+                    Text("Googleログイン")
+                }.padding()
+                Button {
+                    isRegistrationView.toggle()
+                } label: {
+                    Text("新規登録はコチラ")
+                }.padding()
+            }
+            .navigationDestination(isPresented: $loginViewModel.isTodoView) {
+                TodoView()
+            }
+            .navigationDestination(isPresented: $isRegistrationView) {
+                RegistrationView()
             }
         }
     }
