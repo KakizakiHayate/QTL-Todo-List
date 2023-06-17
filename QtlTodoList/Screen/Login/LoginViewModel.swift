@@ -11,17 +11,23 @@ import GoogleSignIn
 import FirebaseCore
 
 class LoginViewModel: ObservableObject {
+    // MARK: - Property Wrappers
     @Published var email = "hayate.k.0704@gmail.com"
     @Published var password = "hayate1111"
     // TODO:  ログインできたらtrueにして画面遷移
-    @Published var isStateLogin = false
+    @Published var isTodoView = false
 }
 
 extension LoginViewModel {
+    // MARK: - Methods
+    /// メールアドレス/パスワードでログイン
     func login() {
         Task {
             do {
-                let result = try await Auth.auth().signIn(withEmail: email, password: password)
+                try await Auth.auth().signIn(withEmail: email, password: password)
+                Task.detached { @MainActor in
+                    self.isTodoView.toggle()
+                }
                 print("ログインしました")
             } catch let error {
                 print(error.localizedDescription)
@@ -29,6 +35,7 @@ extension LoginViewModel {
         }
     }
 
+    /// Googleログイン
     func googleLogin() {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
         let config = GIDConfiguration(clientID: clientID)
@@ -47,7 +54,10 @@ extension LoginViewModel {
                   let idToken = user.idToken?.tokenString else {
                 return
             }
-            let credntial = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: user.accessToken.tokenString)
+            GoogleAuthProvider.credential(withIDToken: idToken, accessToken: user.accessToken.tokenString)
+            Task.detached { @MainActor in
+                self.isTodoView.toggle()
+            }
         }
     }
 }
