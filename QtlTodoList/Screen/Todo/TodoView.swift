@@ -41,6 +41,7 @@ struct TodoView: View {
                     }
                 }
             }
+            .navigationBarBackButtonHidden(true)
         }
     } // body
 } // view
