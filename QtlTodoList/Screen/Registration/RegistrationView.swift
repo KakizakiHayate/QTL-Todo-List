@@ -10,21 +10,27 @@ import SwiftUI
 struct RegistrationView: View {
     @StateObject private var registrationViewModel = RegistrationViewModel()
     var body: some View {
-        VStack {
-            TextField("名前を入力", text: $registrationViewModel.name)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+        NavigationStack {
+            VStack {
+                TextField("名前を入力", text: $registrationViewModel.name)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                TextField("メールアドレスを入力", text: $registrationViewModel.email)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                TextField("パスワードを入力", text: $registrationViewModel.password)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                Button {
+                    registrationViewModel.registration()
+                    print("sss")
+                } label: {
+                    Text(AppConst.Text.registration)
+                }
                 .padding()
-            TextField("メールアドレスを入力", text: $registrationViewModel.email)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            TextField("パスワードを入力", text: $registrationViewModel.password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            Button {
-                registrationViewModel.registration()
-                print("sss")
-            } label: {
-                Text(AppConst.Text.registration)
+            }
+            .navigationDestination(isPresented: $registrationViewModel.isTodoView) {
+                TodoView()
             }
         }
     }
