@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct RegistrationView: View {
+    // MARK: - Property Wrappers
     @StateObject private var registrationViewModel = RegistrationViewModel()
+    // MARK: - body
     var body: some View {
         NavigationStack {
             VStack {
@@ -33,9 +35,10 @@ struct RegistrationView: View {
                 TodoView()
             }
         }
-    }
-}
+    } // body
+} // view
 
+// MARK: - Preview
 struct RegistrationView_Previews: PreviewProvider {
     static var previews: some View {
         RegistrationView()
