@@ -9,9 +9,11 @@ import Foundation
 import FirebaseAuth
 
 class RegistrationViewModel: ObservableObject {
+    // MARK: - Property Wrappers
     @Published var name = "kakizaki"
     @Published var email = "hayate.k.0704@gmail.com"
     @Published var password = "hayate1111"
+    @Published var isTodoView = false
 }
 
 extension RegistrationViewModel {
@@ -26,11 +28,13 @@ extension RegistrationViewModel {
                 request.displayName = name
                 try await request.commitChanges()
                 try await result.user.sendEmailVerification()
+                Task.detached { @MainActor in
+                    self.isTodoView.toggle()
+                }
             } catch let error {
                 // TODO: エラーだった場合は、違うメソッドに飛ばしてエラー表示をScreenにもする
                 print(error.localizedDescription)
             }
         }
-
     }
 }
