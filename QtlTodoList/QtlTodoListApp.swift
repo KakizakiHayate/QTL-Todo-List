@@ -26,4 +26,4 @@ struct QtlTodoListApp: App {
             LoginView()
         }
     } // body
-} // App
+} // app
