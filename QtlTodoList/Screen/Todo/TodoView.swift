@@ -30,8 +30,7 @@ struct TodoView: View {
                                 Image(systemName: "pencil.tip.crop.circle.badge.plus")
                                     .foregroundColor(.white)
                                     .font(.largeTitle)
-                            }
-                            .frame(width: 70, height: 70)
+                            }.frame(width: 70, height: 70)
                             .background(Color.customColorEmeraldGreen)
                             .cornerRadius(40)
                             .padding()
