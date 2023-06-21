@@ -12,7 +12,8 @@ struct AddTodoView: View {
     @State private var title = ""
     @State private var message = ""
     @Binding var isTodoAddDetails: Bool
-    @ObservedObject var todoListViewModel = TodoListViewModel.shared
+    @StateObject private var todoViewModel = TodoViewModel.shared
+
     // MARK: - body
     var body: some View {
         ScrollView {
@@ -26,13 +27,12 @@ struct AddTodoView: View {
                     .padding()
                 Button {
                     if !title.isEmpty || !message.isEmpty {
-                        self.todoListViewModel.createFirestoreData(title: title, message: message)
+                        self.todoViewModel.createFirestoreData(title: title, message: message)
                     }
                     self.isTodoAddDetails.toggle()
                 } label: {
                     Text("完了")
-                }
-                .padding()
+                }.padding()
             }
         }
     } // body

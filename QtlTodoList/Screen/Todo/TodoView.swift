@@ -10,9 +10,8 @@ import SwiftUI
 struct TodoView: View {
     // MARK: - Property Wrappers
     @State private var isTodoAddDetails = false
-    @ObservedObject var todoViewModel = TodoViewModel.shared
-    @ObservedObject var todoListViewModel = TodoListViewModel.shared
-    
+    @StateObject private var todoViewModel = TodoViewModel.shared
+
     // MARK: - body
     var body: some View {
         NavigationStack {
