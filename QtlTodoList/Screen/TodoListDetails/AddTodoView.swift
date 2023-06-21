@@ -40,7 +40,7 @@ struct AddTodoView: View {
                         .padding(.horizontal)
                     ZStack {
                         TextEditor(text: $message)
-                            .frame(height: 250)
+                            .frame(height: proxy.size.height / 3)
                             .border(isTextEmpty ? .red : .gray, width: 1)
                             .padding()
                         if self.message.isEmpty {
