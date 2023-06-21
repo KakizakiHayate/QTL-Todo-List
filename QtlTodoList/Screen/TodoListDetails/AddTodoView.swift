@@ -11,28 +11,67 @@ struct AddTodoView: View {
     // MARK: - Property Wrappers
     @State private var title = ""
     @State private var message = ""
+    @State private var isTextEmpty = false
     @Binding var isTodoAddDetails: Bool
     @StateObject private var todoViewModel = TodoViewModel.shared
 
     // MARK: - body
     var body: some View {
-        ScrollView {
-            VStack {
-                TextField("入力", text: $title)
-                    .padding()
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                TextEditor(text: $message)
-                    .frame(height: 250)
-                    .border(.gray, width: 2)
-                    .padding()
-                Button {
-                    if !title.isEmpty || !message.isEmpty {
-                        self.todoViewModel.createFirestoreData(title: title, message: message)
+        GeometryReader { proxy in
+            ScrollView {
+                VStack {
+                    Spacer()
+                        .frame(height: proxy.size.height * 0.08)
+                    if isTextEmpty {
+                        HStack {
+                            Text("タイトル又はメッセージが未入力です")
+                                .foregroundColor(.red)
+                                .padding(.leading)
+                            Spacer()
+                        }
                     }
-                    self.isTodoAddDetails.toggle()
-                } label: {
-                    Text("完了")
-                }.padding()
+                    TextField("タイトルが入力", text: $title)
+                        .padding()
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(isTextEmpty ? Color.red : Color.gray, lineWidth: 1)
+                        )
+                        .padding(.top, 0)
+                        .padding(.horizontal)
+                    ZStack {
+                        TextEditor(text: $message)
+                            .frame(height: 250)
+                            .border(isTextEmpty ? .red : .gray, width: 1)
+                            .padding()
+                        if self.message.isEmpty {
+                            VStack {
+                                HStack {
+                                    Text("メッセージを入力")
+                                        .opacity(0.25)
+                                        .padding()
+                                    Spacer()
+                                }.padding(.leading, 4)
+                                    .padding(.top, 10)
+                                Spacer()
+                            }
+                        }
+                    }
+                    Button {
+                        if !title.isEmpty && !message.isEmpty {
+                            todoViewModel.createFirestoreData(title: title, message: message)
+                            isTodoAddDetails.toggle()
+                        } else {
+                            isTextEmpty = true
+                        }
+                    } label: {
+                        Text("完了")
+                            .foregroundColor(.white)
+                            .bold()
+                            .frame(width: proxy.size.width / 4)
+                    }.padding()
+                        .background(Color.customColorEmeraldGreen)
+                        .cornerRadius(40)
+                }
             }
         }
     } // body
