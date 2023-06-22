@@ -24,6 +24,7 @@ DerivedData/
 !*.xcworkspace/contents.xcworkspacedata
 ## library
 Pods/*
+!/Podfile.lock
 Carthage/Build/
 ## Other
 *.moved-aside
