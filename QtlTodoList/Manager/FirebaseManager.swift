@@ -15,7 +15,6 @@ final class FirebaseManager: ObservableObject {
     // MARK: - Properties
     static let shared = FirebaseManager()
     private static let firestore = Firestore.firestore()
-
 }
 
 extension FirebaseManager {
