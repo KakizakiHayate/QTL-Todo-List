@@ -9,8 +9,8 @@ import SwiftUI
 
 struct TodoView: View {
     // MARK: - Property Wrappers
-    @State private var isTodoAddDetails = false
     @StateObject private var todoViewModel = TodoViewModel.shared
+    @StateObject private var firebaseManager = FirebaseManager.shared
 
     // MARK: - body
     var body: some View {
@@ -23,8 +23,8 @@ struct TodoView: View {
                         HStack {
                             Spacer()
                             Button {
-                                self.todoViewModel.todo = Todos(title: "", message: "")
-                                self.isTodoAddDetails.toggle()
+                                firebaseManager.todo = Todos(title: "", message: "")
+                                todoViewModel.isTodoAddDetails.toggle()
                             } label: {
                                 Image(systemName: "pencil.tip.crop.circle.badge.plus")
                                     .foregroundColor(.white)
@@ -33,8 +33,8 @@ struct TodoView: View {
                             .background(Color.customColorEmeraldGreen)
                             .cornerRadius(40)
                             .padding()
-                            .sheet(isPresented: $isTodoAddDetails) {
-                                AddTodoView(isTodoAddDetails: $isTodoAddDetails)
+                            .sheet(isPresented: $todoViewModel.isTodoAddDetails) {
+                                AddTodoView(isTodoAddDetails: $todoViewModel.isTodoAddDetails)
                             }
                         }
                     }
