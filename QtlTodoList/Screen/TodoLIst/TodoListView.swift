@@ -9,17 +9,17 @@ import SwiftUI
 
 struct TodoListView: View {
     // MARK: - Property Wrappers
-    @StateObject private var todoViewModel = TodoViewModel.shared
+    @StateObject private var firebaseManager = FirebaseManager.shared
     
     // MARK: - body
     var body: some View {
         List {
-            ForEach(todoViewModel.todos) { todo in
+            ForEach(firebaseManager.todos) { todo in
                 TodoListDetailView(todo: todo)
             }
         }
         .onAppear {
-            todoViewModel.readFirestoreData()
+            firebaseManager.readFirestoreData()
         }
     } // body
 } // view
