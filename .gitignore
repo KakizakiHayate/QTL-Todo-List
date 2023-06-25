@@ -26,6 +26,7 @@ DerivedData/
 Pods/*
 !/Podfile.lock
 Carthage/Build/
+/QtlTodoList/GoogleService-Info.plist
 ## Other
 *.moved-aside
 *.xccheckout
