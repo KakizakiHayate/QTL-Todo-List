@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestore
 
-class FirebaseManager: ObservableObject {
+final class FirebaseManager: ObservableObject {
     // MARK: - Property Wrappers
     @Published var todos = [Todos]()
     @Published var todo = Todos(title: "", message: "")
