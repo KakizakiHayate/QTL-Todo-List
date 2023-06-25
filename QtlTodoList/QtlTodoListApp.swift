@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import FirebaseCore
 
 @main
 struct QtlTodoListApp: App {
+    // MARK: - init
+    init() {
+        FirebaseApp.configure()
+    }
+    // MARK: - body
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TodoView()
         }
-    }
-}
+    } // body
+} // App
