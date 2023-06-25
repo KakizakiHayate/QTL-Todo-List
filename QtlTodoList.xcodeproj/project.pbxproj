@@ -17,7 +17,6 @@
 		75995FFF2A3CC01D00709A6C /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75995FFE2A3CC01D00709A6C /* TodoViewModel.swift */; };
 		759960022A3CC07E00709A6C /* Todos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759960012A3CC07E00709A6C /* Todos.swift */; };
 		759960052A3CC0C400709A6C /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759960042A3CC0C400709A6C /* TodoListView.swift */; };
-		759960092A3D3E6B00709A6C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 759960082A3D3E6B00709A6C /* GoogleService-Info.plist */; };
 		7599600C2A3D45BA00709A6C /* AddTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7599600B2A3D45BA00709A6C /* AddTodoView.swift */; };
 		7599600E2A3D45C600709A6C /* UpdateTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7599600D2A3D45C600709A6C /* UpdateTodoView.swift */; };
 		759960112A3D467A00709A6C /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759960102A3D467A00709A6C /* ColorExtension.swift */; };
@@ -36,7 +35,6 @@
 		75995FFE2A3CC01D00709A6C /* TodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
 		759960012A3CC07E00709A6C /* Todos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todos.swift; sourceTree = "<group>"; };
 		759960042A3CC0C400709A6C /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
-		759960082A3D3E6B00709A6C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7599600B2A3D45BA00709A6C /* AddTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoView.swift; sourceTree = "<group>"; };
 		7599600D2A3D45C600709A6C /* UpdateTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTodoView.swift; sourceTree = "<group>"; };
 		759960102A3D467A00709A6C /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 			children = (
 				75995FEE2A3CB81200709A6C /* QtlTodoListApp.swift */,
 				759960122A3D6C9B00709A6C /* Info.plist */,
-				759960082A3D3E6B00709A6C /* GoogleService-Info.plist */,
 				7599600F2A3D464E00709A6C /* Extension */,
 				755847122A47275A00D88B2F /* Manager */,
 				759960002A3CC05D00709A6C /* Model */,
@@ -263,7 +260,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				759960092A3D3E6B00709A6C /* GoogleService-Info.plist in Resources */,
 				75995FF62A3CB81600709A6C /* Preview Assets.xcassets in Resources */,
 				75995FF32A3CB81600709A6C /* Assets.xcassets in Resources */,
 			);
