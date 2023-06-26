@@ -9,27 +9,26 @@ import SwiftUI
 
 struct UpdateTodoView: View {
     // MARK: - Property Wrappers
-    @ObservedObject var todoViewModel = TodoViewModel.shared
-    @ObservedObject var todoListViewModel = TodoListViewModel.shared
+    @StateObject private var firebaseManager  = FirebaseManager.shared
     @Environment(\.dismiss) private var dismiss
+
     // MARK: - body
     var body: some View {
         ScrollView {
             VStack {
-                TextField("入力", text: $todoViewModel.todo.title)
+                TextField("入力", text: $firebaseManager.todo.title)
                     .padding()
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                TextEditor(text: $todoViewModel.todo.message)
+                TextEditor(text: $firebaseManager.todo.message)
                     .frame(height: 250)
                     .border(.gray, width: 2)
                     .padding()
                 Button {
-                    self.todoListViewModel.updateFirestoreData(todo: todoViewModel.todo)
+                    firebaseManager.updateFirestoreData(todo: firebaseManager.todo)
                     dismiss()
                 } label: {
                     Text("完了")
-                }
-                .padding()
+                }.padding()
             }
         }
     } // body

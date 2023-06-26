@@ -1,28 +1,29 @@
 //
-//  TodoViewModel.swift
+//  firebaseManager.swift
 //  QtlTodoList
 //
-//  Created by 柿崎逸 on 2023/06/17.
+//  Created by 柿崎逸 on 2023/06/24.
 //
 
 import Foundation
 import FirebaseFirestore
 
-class TodoListViewModel: ObservableObject {
+final class FirebaseManager: ObservableObject {
     // MARK: - Property Wrappers
     @Published var todos = [Todos]()
+    @Published var todo = Todos(title: "", message: "")
     // MARK: - Properties
-    private let firestore = Firestore.firestore()
-    static let shared = TodoListViewModel()
+    static let shared = FirebaseManager()
+    private static let firestore = Firestore.firestore()
 }
 
-extension TodoListViewModel {
+extension FirebaseManager {
     // MARK: - Methods
     /// Firestoreにデータ追加
     func createFirestoreData(title: String, message: String) {
         let todos = Todos(title: "", message: "")
         Task {
-            try await firestore.collection("todos").document(todos.id).setData([
+            try await FirebaseManager.firestore.collection("todos").document(todos.id).setData([
                 "title": title,
                 "message": message
             ])
@@ -31,7 +32,7 @@ extension TodoListViewModel {
 
     /// Firestoreのデータ読み込み
     func readFirestoreData() {
-         firestore.collection("todos").addSnapshotListener { querySnapshot, error in
+        FirebaseManager.firestore.collection("todos").addSnapshotListener { querySnapshot, error in
             guard let documents = querySnapshot?.documents else {
                 print("error: \(error.debugDescription)")
                 return
@@ -49,7 +50,7 @@ extension TodoListViewModel {
     /// FireStoreのデータ更新
     func updateFirestoreData(todo: Todos) {
         Task {
-            try await firestore.collection("todos").document(todo.id).setData([
+            try await FirebaseManager.firestore.collection("todos").document(todo.id).setData([
                 "title": todo.title,
                 "message": todo.message
             ])
@@ -59,7 +60,7 @@ extension TodoListViewModel {
     /// Firestoreのデータ削除
     func deleteFirestoreData(todo: Todos) {
         Task {
-            try await firestore.collection("todos").document(todo.id).delete()
+            try await FirebaseManager.firestore.collection("todos").document(todo.id).delete()
         }
     }
-} // extension
+}

@@ -9,7 +9,7 @@ import Foundation
 
 class TodoViewModel: ObservableObject {
     // MARK: - Property Wrappers
-    @Published var todo = Todos(title: "", message: "")
+    @Published var isTodoAddDetails = false
     // MARK: - Properties
     static let shared = TodoViewModel()
 }
