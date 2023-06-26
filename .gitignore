@@ -28,7 +28,7 @@ Carthage/Build/
 *.xcworkspace
 
 ## Firebase
-/QtlTodoList/GoogleService-Info.plist
+GoogleService-Info.plist
 
 ## Other
 *.moved-aside
