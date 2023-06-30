@@ -12,6 +12,4 @@ class AddTodoViewModel: ObservableObject {
     @Published var title = ""
     @Published var message = ""
     @Published var isTextEmpty = false
-    // MARK: - Properties
-    static let shared = AddTodoViewModel()
 }
