@@ -10,10 +10,8 @@ import FirebaseFirestore
 
 final class FirebaseManager: ObservableObject {
     // MARK: - Property Wrappers
-    @Published var todos = [Todos]()
     @Published var todo = Todos(title: "", message: "")
     // MARK: - Properties
-    static let shared = FirebaseManager()
     private static let firestore = Firestore.firestore()
 }
 
@@ -31,20 +29,21 @@ extension FirebaseManager {
     }
 
     /// Firestoreのデータ読み込み
-    func readFirestoreData() {
-        FirebaseManager.firestore.collection("todos").addSnapshotListener { querySnapshot, error in
+    func readFirestoreData(completion: @escaping ([Todos]) -> Void)  {
+        FirebaseManager.firestore.collection("todos").addSnapshotListener { querySnapshot, _ in
             guard let documents = querySnapshot?.documents else {
-                print("error: \(error.debugDescription)")
                 return
             }
-            self.todos = documents.map { querySnapshot -> Todos in
+            // TODO: let todosがダメ、mapクロージャが値を一個ずつ取り出している。
+            let todos = documents.map { querySnapshot -> Todos in
                 let data = querySnapshot.data()
                 let title = data["title"] as? String ?? ""
                 let message = data["message"] as? String ?? ""
 
                 return Todos(id: querySnapshot.documentID, title: title, message: message)
             }
-         }
+            completion(todos)
+        }
     }
 
     /// FireStoreのデータ更新
