@@ -11,6 +11,7 @@
 		755847142A47279E00D88B2F /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755847132A47279E00D88B2F /* FirebaseManager.swift */; };
 		7558471B2A473A1B00D88B2F /* AddTodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558471A2A473A1B00D88B2F /* AddTodoViewModel.swift */; };
 		7558471F2A488BFB00D88B2F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7558471E2A488BFA00D88B2F /* GoogleService-Info.plist */; };
+		755847292A4A7E0F00D88B2F /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755847282A4A7E0F00D88B2F /* TodoListViewModel.swift */; };
 		75995FEF2A3CB81200709A6C /* QtlTodoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75995FEE2A3CB81200709A6C /* QtlTodoListApp.swift */; };
 		75995FF12A3CB81200709A6C /* TodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75995FF02A3CB81200709A6C /* TodoView.swift */; };
 		75995FF32A3CB81600709A6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75995FF22A3CB81600709A6C /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 		755847132A47279E00D88B2F /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		7558471A2A473A1B00D88B2F /* AddTodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewModel.swift; sourceTree = "<group>"; };
 		7558471E2A488BFA00D88B2F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		755847282A4A7E0F00D88B2F /* TodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModel.swift; sourceTree = "<group>"; };
 		75995FEB2A3CB81200709A6C /* QtlTodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QtlTodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75995FEE2A3CB81200709A6C /* QtlTodoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QtlTodoListApp.swift; sourceTree = "<group>"; };
 		75995FF02A3CB81200709A6C /* TodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoView.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			children = (
 				755847172A47381700D88B2F /* TodoListDetail */,
 				759960042A3CC0C400709A6C /* TodoListView.swift */,
+				755847282A4A7E0F00D88B2F /* TodoListViewModel.swift */,
 			);
 			path = TodoLIst;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				75995FFF2A3CC01D00709A6C /* TodoViewModel.swift in Sources */,
 				7599600C2A3D45BA00709A6C /* AddTodoView.swift in Sources */,
 				759960112A3D467A00709A6C /* ColorExtension.swift in Sources */,
+				755847292A4A7E0F00D88B2F /* TodoListViewModel.swift in Sources */,
 				7599600E2A3D45C600709A6C /* UpdateTodoView.swift in Sources */,
 				75E58ED12A4209FF0059312A /* TodoListDetailView.swift in Sources */,
 				75995FF12A3CB81200709A6C /* TodoView.swift in Sources */,
