@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UpdateTodoView: View {
     // MARK: - Property Wrappers
-    @StateObject private var firebaseManager  = FirebaseManager.shared
+    @StateObject private var firebaseManager  = FirebaseManager()
     @Environment(\.dismiss) private var dismiss
 
     // MARK: - body
