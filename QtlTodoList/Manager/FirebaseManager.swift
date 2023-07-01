@@ -13,6 +13,9 @@ final class FirebaseManager: ObservableObject {
     @Published var todo = Todos(title: "", message: "")
     // MARK: - Properties
     private static let firestore = Firestore.firestore()
+    static let shared = FirebaseManager()
+    // MARK: - init
+    private init() {}
 }
 
 extension FirebaseManager {
