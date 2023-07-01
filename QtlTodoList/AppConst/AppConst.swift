@@ -2,7 +2,7 @@
 //  AppConst.swift
 //  QtlTodoList
 //
-//  Created by 柿崎逸 on 2023/06/17.
+//  Created by 柿崎逸 on 2023/07/01.
 //
 
 import Foundation
