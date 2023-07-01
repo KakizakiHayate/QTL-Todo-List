@@ -10,7 +10,7 @@ import SwiftUI
 struct TodoListDetailView: View {
     // MARK: - Property Wrappers
     @State private var isTodoUpdateDetails = false
-    @StateObject private var firebaseManager = FirebaseManager()
+    @StateObject private var firebaseManager = FirebaseManager.shared
     // MARK: - Properties
     private let todo: Todos
     // MARK: init
