@@ -10,7 +10,7 @@ import SwiftUI
 struct TodoView: View {
     // MARK: - Property Wrappers
     @StateObject private var todoViewModel = TodoViewModel()
-    @StateObject private var firebaseManager = FirebaseManager()
+    @StateObject private var firebaseManager = FirebaseManager.shared
 
     // MARK: - body
     var body: some View {
