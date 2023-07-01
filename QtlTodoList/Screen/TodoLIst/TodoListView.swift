@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TodoListView: View {
     // MARK: - Property Wrappers
-    @StateObject private var firebaseManager = FirebaseManager()
+    @StateObject private var firebaseManager = FirebaseManager.shared
     @StateObject private var todoListViewModel = TodoListViewModel()
 
     // MARK: - body
@@ -19,9 +19,7 @@ struct TodoListView: View {
                 TodoListDetailView(todo: todo)
             }
         }.onAppear {
-            firebaseManager.readFirestoreData { todos in
-                todoListViewModel.todos = todos
-            }
+            todoListViewModel.fetchTodoData()
         }
     } // body
 } // view
