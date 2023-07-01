@@ -10,7 +10,7 @@ import SwiftUI
 struct AddTodoView: View {
     // MARK: - Property Wrappers
     @Binding var isTodoAddDetails: Bool
-    @StateObject private var firebaseManager = FirebaseManager()
+    @StateObject private var firebaseManager = FirebaseManager.shared
     @StateObject private var addTodoViewModel = AddTodoViewModel()
 
     // MARK: - body
