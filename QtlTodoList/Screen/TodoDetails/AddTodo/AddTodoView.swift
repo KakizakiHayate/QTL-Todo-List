@@ -18,8 +18,11 @@ struct AddTodoView: View {
         GeometryReader { proxy in
             ScrollView {
                 VStack {
+                    Text("追加画面")
+                        .padding()
+                        .font(.title)
                     Spacer()
-                        .frame(height: proxy.size.height * 0.08)
+                        .frame(height: proxy.size.height * addTodoViewModel.topSpacing)
                     if addTodoViewModel.isTextEmpty {
                         HStack {
                             Text("タイトル又はメッセージが未入力です")
@@ -32,14 +35,14 @@ struct AddTodoView: View {
                         .padding()
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
-                                .stroke(addTodoViewModel.isTextEmpty ? Color.red : Color.gray, lineWidth: 1)
+                                .stroke(addTodoViewModel.isTextEmpty ? .red : Color.customColorEmeraldGreen.opacity(0.5), lineWidth: 1)
                         )
                         .padding(.top, 0)
                         .padding(.horizontal)
                     ZStack {
                         TextEditor(text: $addTodoViewModel.message)
                             .frame(height: proxy.size.height / 3)
-                            .border(addTodoViewModel.isTextEmpty ? .red : .gray, width: 1)
+                            .border(addTodoViewModel.isTextEmpty ? .red : Color.customColorEmeraldGreen.opacity(0.5), width: 1)
                             .padding()
                         if addTodoViewModel.message.isEmpty {
                             VStack {
@@ -55,15 +58,15 @@ struct AddTodoView: View {
                         }
                     }
                     Button {
+                        if !addTodoViewModel.title.isEmpty && !addTodoViewModel.message.isEmpty {
                         Task {
-                            if !addTodoViewModel.title.isEmpty && !addTodoViewModel.message.isEmpty {
                                 await firebaseManager.createFirestoreData(title: addTodoViewModel.title, message: addTodoViewModel.message)
                                 isTodoAddDetails.toggle()
                                 addTodoViewModel.title = ""
                                 addTodoViewModel.message = ""
-                            } else {
-                                addTodoViewModel.isTextEmpty = true
                             }
+                        } else {
+                            addTodoViewModel.isTextEmpty = true
                         }
                     } label: {
                         Text("完了")
