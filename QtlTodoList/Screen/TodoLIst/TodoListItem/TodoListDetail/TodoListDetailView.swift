@@ -9,8 +9,6 @@ import SwiftUI
 
 struct TodoListDetailView: View {
     // MARK: - Property Wrappers
-    @State private var isUpdateTodoView = false
-    @State private var isDeleteAlert = false
     @Binding var todos: Todos
     @StateObject private var firebaseManager = FirebaseManager.shared
     // MARK: - Properties
@@ -24,7 +22,8 @@ struct TodoListDetailView: View {
                 Text(todos.title)
                     .font(.callout)
                     .padding()
-                    .frame(width: frameWidth, alignment: .leading)
+                    .frame(width: frameWidth,
+                           alignment: .leading)
                     .background(.white)
                     .cornerRadius(8)
                     .shadow(color: .gray.opacity(0.7), radius: 5)
@@ -33,50 +32,16 @@ struct TodoListDetailView: View {
                 Text(todos.message)
                     .font(.caption)
                     .padding()
-                    .frame(width: frameWidth, height: UIScreen.main.bounds.height * 0.5, alignment: .topLeading)
+                    .frame(width: frameWidth,
+                           height: UIScreen.main.bounds.height * 0.5,
+                           alignment: .topLeading)
                     .background(.white)
                     .cornerRadius(8)
                     .shadow(color: .gray.opacity(0.7), radius: 5)
                     .offset(x: (proxy.size.width - (frameWidth)) / equalSpacing,
                             y: UIScreen.main.bounds.height * 0.2)
             }
-            HStack {
-                Button {
-                    isUpdateTodoView.toggle()
-                } label: {
-                    Image(systemName: "pencil")
-                }.foregroundColor(.white)
-                    .padding()
-                    .font(.system(size: 30))
-                    .background(
-                        RoundedRectangle(cornerRadius: 40)
-                            .fill(Color.customColorEmeraldGreen)
-                    ).padding()
-                    .navigationDestination(isPresented: $isUpdateTodoView) {
-                        UpdateTodoView(todos: $todos)
-                    }
-                Button {
-                    isDeleteAlert.toggle()
-                } label: {
-                    Image(systemName: "trash")
-                }.foregroundColor(.white)
-                    .padding()
-                    .font(.system(size: 25))
-                    .background(
-                        RoundedRectangle(cornerRadius: 40)
-                            .fill(Color.customColorEmeraldGreen)
-                    ).padding()
-                    .alert("このタスクを削除しますか？", isPresented: $isDeleteAlert) {
-                        Button {} label: { Text("キャンセル") }
-                        Button {
-                            Task {
-                                firebaseManager.deleteFirestoreData(todo:)
-                            }
-                        } label: {
-                            Text("OK")
-                        }
-                    }
-            }
+            UpdateDeleteButtonView(todos: $todos)
         }
     } // body
 } // view
