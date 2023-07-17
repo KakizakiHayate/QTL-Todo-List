@@ -12,4 +12,6 @@ class AddTodoViewModel: ObservableObject {
     @Published var title = ""
     @Published var message = ""
     @Published var isTextEmpty = false
+    // MARK: - Properties
+    let topSpacing: CGFloat = 0.08
 }
