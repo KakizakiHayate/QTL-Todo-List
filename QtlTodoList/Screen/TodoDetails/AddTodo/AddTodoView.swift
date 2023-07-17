@@ -55,13 +55,15 @@ struct AddTodoView: View {
                         }
                     }
                     Button {
-                        if !addTodoViewModel.title.isEmpty && !addTodoViewModel.message.isEmpty {
-                            firebaseManager.createFirestoreData(title: addTodoViewModel.title, message: addTodoViewModel.message)
-                            isTodoAddDetails.toggle()
-                            addTodoViewModel.title = ""
-                            addTodoViewModel.message = ""
-                        } else {
-                            addTodoViewModel.isTextEmpty = true
+                        Task {
+                            if !addTodoViewModel.title.isEmpty && !addTodoViewModel.message.isEmpty {
+                                await firebaseManager.createFirestoreData(title: addTodoViewModel.title, message: addTodoViewModel.message)
+                                isTodoAddDetails.toggle()
+                                addTodoViewModel.title = ""
+                                addTodoViewModel.message = ""
+                            } else {
+                                addTodoViewModel.isTextEmpty = true
+                            }
                         }
                     } label: {
                         Text("完了")
