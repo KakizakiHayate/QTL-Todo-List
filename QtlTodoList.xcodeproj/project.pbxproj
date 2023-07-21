@@ -10,7 +10,7 @@
 		462FC8D2392AB7284B9AF0ED /* Pods_QtlTodoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E964B5BC5C4AFAFCE3C32F /* Pods_QtlTodoList.framework */; };
 		755847142A47279E00D88B2F /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755847132A47279E00D88B2F /* FirebaseManager.swift */; };
 		7558471B2A473A1B00D88B2F /* AddTodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558471A2A473A1B00D88B2F /* AddTodoViewModel.swift */; };
-		7558471F2A488BFB00D88B2F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7558471E2A488BFA00D88B2F /* GoogleService-Info.plist */; };
+		7561AE942A6AF35700BC20F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7561AE932A6AF35700BC20F1 /* GoogleService-Info.plist */; };
 		756D69772A658DB10072164A /* UpdateDeleteButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756D69762A658DB10072164A /* UpdateDeleteButtonView.swift */; };
 		756D69792A65AA2D0072164A /* UpdateTodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756D69782A65AA2D0072164A /* UpdateTodoViewModel.swift */; };
 		759373642A610EE3001848B7 /* TodoListDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759373632A610EE3001848B7 /* TodoListDetailView.swift */; };
@@ -31,7 +31,7 @@
 		09E964B5BC5C4AFAFCE3C32F /* Pods_QtlTodoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QtlTodoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		755847132A47279E00D88B2F /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		7558471A2A473A1B00D88B2F /* AddTodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewModel.swift; sourceTree = "<group>"; };
-		7558471E2A488BFA00D88B2F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7561AE932A6AF35700BC20F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		756D69762A658DB10072164A /* UpdateDeleteButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDeleteButtonView.swift; sourceTree = "<group>"; };
 		756D69782A65AA2D0072164A /* UpdateTodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTodoViewModel.swift; sourceTree = "<group>"; };
 		759373632A610EE3001848B7 /* TodoListDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListDetailView.swift; sourceTree = "<group>"; };
@@ -130,8 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				75995FEE2A3CB81200709A6C /* QtlTodoListApp.swift */,
-				755847242A49B5E400D88B2F /* GoogleService-Info.plist */,
 				759960122A3D6C9B00709A6C /* Info.plist */,
+				7561AE932A6AF35700BC20F1 /* GoogleService-Info.plist */,
 				7599600F2A3D464E00709A6C /* Extension */,
 				755847122A47275A00D88B2F /* Manager */,
 				759960002A3CC05D00709A6C /* Model */,
@@ -282,7 +282,7 @@
 			files = (
 				75995FF62A3CB81600709A6C /* Preview Assets.xcassets in Resources */,
 				75995FF32A3CB81600709A6C /* Assets.xcassets in Resources */,
-				755847252A49B5E400D88B2F /* GoogleService-Info.plist in Resources */,
+				7561AE942A6AF35700BC20F1 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
