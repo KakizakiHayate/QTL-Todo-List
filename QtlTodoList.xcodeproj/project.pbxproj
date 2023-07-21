@@ -130,7 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				75995FEE2A3CB81200709A6C /* QtlTodoListApp.swift */,
-				7558471E2A488BFA00D88B2F /* GoogleService-Info.plist */,
+				755847242A49B5E400D88B2F /* GoogleService-Info.plist */,
 				759960122A3D6C9B00709A6C /* Info.plist */,
 				7599600F2A3D464E00709A6C /* Extension */,
 				755847122A47275A00D88B2F /* Manager */,
@@ -281,8 +281,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				75995FF62A3CB81600709A6C /* Preview Assets.xcassets in Resources */,
-				7558471F2A488BFB00D88B2F /* GoogleService-Info.plist in Resources */,
 				75995FF32A3CB81600709A6C /* Assets.xcassets in Resources */,
+				755847252A49B5E400D88B2F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
