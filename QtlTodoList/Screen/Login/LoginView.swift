@@ -16,7 +16,6 @@ struct LoginView: View {
     // MARK: - body
     var body: some View {
         GeometryReader { proxy in
-            let width = proxy.size.width
             let height = proxy.size.height
             NavigationStack {
                 VStack {
