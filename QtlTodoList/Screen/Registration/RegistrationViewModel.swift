@@ -10,9 +10,9 @@ import FirebaseAuth
 
 class RegistrationViewModel: ObservableObject {
     // MARK: - Property Wrappers
-    @Published var name = "kakizaki"
-    @Published var email = "hayate.k.0704@gmail.com"
-    @Published var password = "hayate1111"
+    @Published var name = "test"
+    @Published var email = "test@example.com"
+    @Published var password = "password"
     @Published var isTodoView = false
 }
 

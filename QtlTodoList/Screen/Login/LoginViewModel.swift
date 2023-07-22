@@ -12,8 +12,8 @@ import FirebaseCore
 
 class LoginViewModel: ObservableObject {
     // MARK: - Property Wrappers
-    @Published var email = "hayate.k.0704@gmail.com"
-    @Published var password = "hayate1111"
+    @Published var email = "test@example.com"
+    @Published var password = "password"
     // TODO:  ログインできたらtrueにして画面遷移
     @Published var isTodoView = false
 }
