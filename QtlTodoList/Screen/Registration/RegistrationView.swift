@@ -25,10 +25,14 @@ struct RegistrationView: View {
                     .padding()
                 Button {
                     registrationViewModel.registration()
-                    print("sss")
                 } label: {
                     Text(AppConst.Text.registration)
                 }
+                .padding()
+                .background(Color.customColorEmeraldGreen)
+                .foregroundColor(.white)
+                .font(.headline)
+                .cornerRadius(30)
                 .padding()
             }
             .navigationDestination(isPresented: $registrationViewModel.isTodoView) {
