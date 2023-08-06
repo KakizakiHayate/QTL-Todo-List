@@ -14,7 +14,6 @@ class LoginViewModel: ObservableObject {
     // MARK: - Property Wrappers
     @Published var email = "test@example.com"
     @Published var password = "password"
-    // TODO:  ログインできたらtrueにして画面遷移
     @Published var isTodoView = false
 }
 
@@ -25,8 +24,8 @@ extension LoginViewModel {
         Task {
             do {
                 try await Auth.auth().signIn(withEmail: email, password: password)
-                Task.detached { @MainActor in
-                    self.isTodoView.toggle()
+                Task { @MainActor in
+                    isTodoView.toggle()
                 }
                 print("ログインしました")
             } catch let error {
