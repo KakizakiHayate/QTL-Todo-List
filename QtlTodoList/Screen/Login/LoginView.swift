@@ -13,6 +13,7 @@ struct LoginView: View {
     @State private var isRegistrationView = false
     // MARK: Properties
     private let screenSize = UIScreen.main.bounds.height
+    
     // MARK: - body
     var body: some View {
         GeometryReader { proxy in
