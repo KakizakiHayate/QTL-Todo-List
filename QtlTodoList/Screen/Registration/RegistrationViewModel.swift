@@ -33,7 +33,6 @@ extension RegistrationViewModel {
                     isTodoView.toggle()
                 }
             } catch let error {
-                // TODO: エラーだった場合は、違うメソッドに飛ばしてエラー表示をScreenにもする
                 registrationFailureAlert.toggle()
                 print(error.localizedDescription)
             }
