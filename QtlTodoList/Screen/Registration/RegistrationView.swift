@@ -14,13 +14,13 @@ struct RegistrationView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                TextField("名前を入力", text: $registrationViewModel.name)
+                TextField(AppConst.Text.inputName, text: $registrationViewModel.name)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
-                TextField("メールアドレスを入力", text: $registrationViewModel.email)
+                TextField(AppConst.Text.inputMail, text: $registrationViewModel.email)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
-                TextField("パスワードを入力", text: $registrationViewModel.password)
+                TextField(AppConst.Text.inputPassword, text: $registrationViewModel.password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 Button {

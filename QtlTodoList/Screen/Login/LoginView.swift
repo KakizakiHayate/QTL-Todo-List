@@ -20,27 +20,27 @@ struct LoginView: View {
             NavigationStack {
                 VStack {
                     Spacer()
-                    TextField("メールアドレスを入力", text: $loginViewModel.email)
+                    TextField(AppConst.Text.inputMail, text: $loginViewModel.email)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
-                    TextField("パスワードを入力", text: $loginViewModel.password)
+                    TextField(AppConst.Text.inputPassword, text: $loginViewModel.password)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
                     Button {
                         loginViewModel.login()
                     } label: {
-                        Text("ログインする")
+                        Text(AppConst.Text.login)
                     }.padding()
                         .background(Color.customColorEmeraldGreen)
                         .foregroundColor(.white)
                         .font(.headline)
                         .cornerRadius(30)
                     Spacer().frame(height: height / 15)
-                    Text("--- または ---").foregroundColor(.gray)
+                    Text(AppConst.separatorText.or).foregroundColor(.gray)
                     Button {
                         loginViewModel.googleLogin()
                     } label: {
-                        Text("Googleログイン")
+                        Text(AppConst.Text.googleLogin)
                     }.padding()
                         .font(.headline)
                         .foregroundColor(.customColorEmeraldGreen)
@@ -49,12 +49,12 @@ struct LoginView: View {
                         .compositingGroup()
                         .shadow(color: .gray.opacity(0.7) ,radius: 3)
                         .padding()
-                    Text("--- 登録されてない方はコチラ ---")
+                    Text(AppConst.separatorText.notRegistered)
                         .foregroundColor(.gray)
                     Button {
                         isRegistrationView.toggle()
                     } label: {
-                        Text("新規登録")
+                        Text(AppConst.Text.newRegistration)
                     }.padding()
                         .font(.headline)
                         .foregroundColor(.customColorEmeraldGreen)

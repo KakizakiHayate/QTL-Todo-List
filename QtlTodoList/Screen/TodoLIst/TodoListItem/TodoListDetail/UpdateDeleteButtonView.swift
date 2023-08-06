@@ -42,14 +42,14 @@ struct UpdateDeleteButtonView: View {
                     RoundedRectangle(cornerRadius: 40)
                         .fill(Color.customColorEmeraldGreen)
                 ).padding()
-                .alert("このタスクを削除しますか？", isPresented: $isDeleteAlert) {
-                    Button {} label: { Text("キャンセル") }
+                .alert(AppConst.Text.deleteTask, isPresented: $isDeleteAlert) {
+                    Button {} label: { Text(AppConst.Text.cancel) }
                     Button {
                         Task {
                             firebaseManager.deleteFirestoreData(todo:)
                         }
                     } label: {
-                        Text("OK")
+                        Text(AppConst.Text.ok)
                     }
                 }
         }

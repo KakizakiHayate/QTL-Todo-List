@@ -23,7 +23,7 @@ struct TodoView: View {
                         HStack {
                             Spacer()
                             Button {
-                                firebaseManager.todo = Todos(title: "", message: "")
+                                firebaseManager.todo = Todos(title: AppConst.Text.empty, message: AppConst.Text.empty)
                                 todoViewModel.isTodoAddDetails.toggle()
                             } label: {
                                 Image(systemName: "pencil.tip.crop.circle.badge.plus")

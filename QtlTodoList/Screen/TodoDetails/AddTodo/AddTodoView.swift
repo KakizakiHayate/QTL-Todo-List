@@ -18,20 +18,20 @@ struct AddTodoView: View {
         GeometryReader { proxy in
             ScrollView {
                 VStack {
-                    Text("追加画面")
+                    Text(AppConst.Text.addScreen)
                         .padding()
                         .font(.title)
                     Spacer()
                         .frame(height: proxy.size.height * addTodoViewModel.topSpacing)
                     if addTodoViewModel.isTextEmpty {
                         HStack {
-                            Text("タイトル又はメッセージが未入力です")
+                            Text(AppConst.Text.emptyTitleOrMessage)
                                 .foregroundColor(.red)
                                 .padding(.leading)
                             Spacer()
                         }
                     }
-                    TextField("タイトルが入力", text: $addTodoViewModel.title)
+                    TextField(AppConst.Text.inputTitle, text: $addTodoViewModel.title)
                         .padding()
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
@@ -47,7 +47,7 @@ struct AddTodoView: View {
                         if addTodoViewModel.message.isEmpty {
                             VStack {
                                 HStack {
-                                    Text("メッセージを入力")
+                                    Text(AppConst.Text.inputMessage)
                                         .opacity(0.25)
                                         .padding()
                                     Spacer()
@@ -62,14 +62,14 @@ struct AddTodoView: View {
                         Task {
                                 await firebaseManager.createFirestoreData(title: addTodoViewModel.title, message: addTodoViewModel.message)
                                 isTodoAddDetails.toggle()
-                                addTodoViewModel.title = ""
-                                addTodoViewModel.message = ""
+                            addTodoViewModel.title = AppConst.Text.empty
+                            addTodoViewModel.message = AppConst.Text.empty
                             }
                         } else {
                             addTodoViewModel.isTextEmpty = true
                         }
                     } label: {
-                        Text("完了")
+                        Text(AppConst.Text.completed)
                             .foregroundColor(.white)
                             .bold()
                             .frame(width: proxy.size.width / 4)
