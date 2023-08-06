@@ -62,8 +62,7 @@ struct AddTodoView: View {
                         Task {
                                 await firebaseManager.createFirestoreData(title: addTodoViewModel.title, message: addTodoViewModel.message)
                                 isTodoAddDetails.toggle()
-                            addTodoViewModel.title = AppConst.Text.empty
-                            addTodoViewModel.message = AppConst.Text.empty
+                            addTodoViewModel.inputBoxReset()
                             }
                         } else {
                             addTodoViewModel.isTextEmpty = true
