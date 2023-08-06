@@ -28,7 +28,12 @@ struct LoginView: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
                     Button {
-                        loginViewModel.login()
+                        if !loginViewModel.email.isEmpty &&
+                            !loginViewModel.password.isEmpty {
+                            loginViewModel.login()
+                        } else {
+                            loginViewModel.registrationFailureAlert.toggle()
+                        }
                     } label: {
                         Text(AppConst.Text.login)
                     }.padding()
@@ -36,6 +41,11 @@ struct LoginView: View {
                         .foregroundColor(.white)
                         .font(.headline)
                         .cornerRadius(30)
+                        .alert(AppConst.Text.registrationFailure, isPresented: $loginViewModel.registrationFailureAlert) {
+                            Button {} label: { Text(AppConst.Text.ok) }
+                        } message: {
+                            Text(AppConst.Text.retry)
+                        }
                     Spacer().frame(height: height / 15)
                     Text(AppConst.separatorText.or).foregroundColor(.gray)
                     Button {

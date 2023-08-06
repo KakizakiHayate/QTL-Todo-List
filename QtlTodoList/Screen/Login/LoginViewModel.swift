@@ -15,6 +15,7 @@ class LoginViewModel: ObservableObject {
     @Published var email = "test@example.com"
     @Published var password = "password"
     @Published var isTodoView = false
+    @Published var registrationFailureAlert = false
 }
 
 extension LoginViewModel {
@@ -29,6 +30,7 @@ extension LoginViewModel {
                 }
                 print("ログインしました")
             } catch let error {
+                registrationFailureAlert.toggle()
                 print(error.localizedDescription)
             }
         }
