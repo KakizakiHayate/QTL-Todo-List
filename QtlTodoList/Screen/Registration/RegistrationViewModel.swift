@@ -14,6 +14,7 @@ class RegistrationViewModel: ObservableObject {
     @Published var email = "test@example.com"
     @Published var password = "password"
     @Published var isTodoView = false
+    @Published var registrationFailureAlert = false
 }
 
 extension RegistrationViewModel {
@@ -33,6 +34,7 @@ extension RegistrationViewModel {
                 }
             } catch let error {
                 // TODO: エラーだった場合は、違うメソッドに飛ばしてエラー表示をScreenにもする
+                registrationFailureAlert.toggle()
                 print(error.localizedDescription)
             }
         }

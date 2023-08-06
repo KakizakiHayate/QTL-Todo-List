@@ -25,7 +25,13 @@ struct RegistrationView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 Button {
-                    registrationViewModel.registration()
+                    if !registrationViewModel.name.isEmpty &&
+                        !registrationViewModel.email.isEmpty &&
+                        !registrationViewModel.password.isEmpty {
+                        registrationViewModel.registration()
+                    } else {
+                        registrationViewModel.registrationFailureAlert.toggle()
+                    }
                 } label: {
                     Text(AppConst.Text.registration)
                 }
@@ -35,6 +41,11 @@ struct RegistrationView: View {
                 .font(.headline)
                 .cornerRadius(30)
                 .padding()
+                .alert(AppConst.Text.registrationFailure, isPresented: $registrationViewModel.registrationFailureAlert) {
+                    Button {} label: { Text(AppConst.Text.ok) }
+                } message: {
+                    Text(AppConst.Text.retry)
+                }
             }
             .navigationDestination(isPresented: $registrationViewModel.isTodoView) {
                 TodoView()
