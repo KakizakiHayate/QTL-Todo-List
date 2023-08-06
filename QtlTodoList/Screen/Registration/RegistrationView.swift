@@ -10,6 +10,7 @@ import SwiftUI
 struct RegistrationView: View {
     // MARK: - Property Wrappers
     @StateObject private var registrationViewModel = RegistrationViewModel()
+    
     // MARK: - body
     var body: some View {
         NavigationStack {
