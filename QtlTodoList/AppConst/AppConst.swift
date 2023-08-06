@@ -27,6 +27,8 @@ enum AppConst {
         static let deleteTask = "このタスクを削除しますか？"
         static let cancel = "キャンセル"
         static let ok = "OK"
+        static let registrationFailure = "新規登録に失敗しました"
+        static let retry = "入力内容を確認して再試行してください"
     }
     enum separatorText {
         static let or = "--- または ---"
