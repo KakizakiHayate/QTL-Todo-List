@@ -29,8 +29,8 @@ extension RegistrationViewModel {
                 request.displayName = name
                 try await request.commitChanges()
                 try await result.user.sendEmailVerification()
-                Task.detached { @MainActor in
-                    self.isTodoView.toggle()
+                Task { @MainActor in
+                    isTodoView.toggle()
                 }
             } catch let error {
                 // TODO: エラーだった場合は、違うメソッドに飛ばしてエラー表示をScreenにもする
