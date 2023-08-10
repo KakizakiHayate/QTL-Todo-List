@@ -29,6 +29,8 @@ enum AppConst {
         static let ok = "OK"
         static let registrationFailure = "新規登録に失敗しました"
         static let retry = "入力内容を確認して再試行してください"
+        static let loginFailure = "ログインに失敗しました"
+        static let googleLoginFailure = "Googleログインに失敗しました"
     }
     enum separatorText {
         static let or = "--- または ---"
