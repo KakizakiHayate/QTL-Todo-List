@@ -11,6 +11,7 @@ struct LoginView: View {
     // MARK: - Property Wrappers
     @StateObject private var loginViewModel = LoginViewModel()
     @State private var isRegistrationView = false
+    
     // MARK: Properties
     private let screenSize = UIScreen.main.bounds.height
     
@@ -30,7 +31,13 @@ struct LoginView: View {
                     Button {
                         if !loginViewModel.email.isEmpty &&
                             !loginViewModel.password.isEmpty {
-                            loginViewModel.login()
+                            Task {
+                                if await loginViewModel.login() {
+                                    loginViewModel.isTodoView.toggle()
+                                } else {
+                                    loginViewModel.registrationFailureAlert.toggle()
+                                }
+                            }
                         } else {
                             loginViewModel.registrationFailureAlert.toggle()
                         }
@@ -41,7 +48,7 @@ struct LoginView: View {
                         .foregroundColor(.white)
                         .font(.headline)
                         .cornerRadius(30)
-                        .alert(AppConst.Text.registrationFailure, isPresented: $loginViewModel.registrationFailureAlert) {
+                        .alert(AppConst.Text.loginFailure, isPresented: $loginViewModel.registrationFailureAlert) {
                             Button {} label: { Text(AppConst.Text.ok) }
                         } message: {
                             Text(AppConst.Text.retry)
@@ -60,6 +67,11 @@ struct LoginView: View {
                         .compositingGroup()
                         .shadow(color: .gray.opacity(0.7) ,radius: 3)
                         .padding()
+                        .alert(AppConst.Text.googleLoginFailure, isPresented: $loginViewModel.registrationFailureAlert) {
+                            Button {} label: { Text(AppConst.Text.ok) }
+                        } message: {
+                            Text(AppConst.Text.retry)
+                        }
                     Text(AppConst.separatorText.notRegistered)
                         .foregroundColor(.gray)
                     Button {
@@ -76,10 +88,10 @@ struct LoginView: View {
                         .padding()
                 }
                 .navigationDestination(isPresented: $loginViewModel.isTodoView) {
-                    TodoView()
+                    TodoView(isTodoView: $loginViewModel.isTodoView)
                 }
                 .navigationDestination(isPresented: $isRegistrationView) {
-                    RegistrationView()
+                    RegistrationView(isTodoView: $loginViewModel.isTodoView)
                 }
             }
         }
