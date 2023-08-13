@@ -28,50 +28,12 @@ struct LoginView: View {
                     TextField(AppConst.Text.inputPassword, text: $loginViewModel.password)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
-                    Button {
-                        if !loginViewModel.email.isEmpty &&
-                            !loginViewModel.password.isEmpty {
-                            Task {
-                                if await loginViewModel.login() {
-                                    loginViewModel.isTodoView.toggle()
-                                } else {
-                                    loginViewModel.loginFailureAlert.toggle()
-                                }
-                            }
-                        } else {
-                            loginViewModel.loginFailureAlert.toggle()
-                        }
-                    } label: {
-                        Text(AppConst.Text.login)
-                    }.padding()
-                        .background(Color.customColorEmeraldGreen)
-                        .foregroundColor(.white)
-                        .font(.headline)
-                        .cornerRadius(30)
-                        .alert(loginViewModel.errorMessage, isPresented: $loginViewModel.loginFailureAlert) {
-                            Button {} label: { Text(AppConst.Text.ok) }
-                        } message: {
-                            Text(AppConst.Text.retry)
-                        }
+                    LoginButtonView(email: $loginViewModel.email,
+                                    password: $loginViewModel.password,
+                                    isTodoView: $loginViewModel.isTodoView)
                     Spacer().frame(height: height / 15)
                     Text(AppConst.separatorText.or).foregroundColor(.gray)
-                    Button {
-                        loginViewModel.googleLogin()
-                    } label: {
-                        Text(AppConst.Text.googleLogin)
-                    }.padding()
-                        .font(.headline)
-                        .foregroundColor(.customColorEmeraldGreen)
-                        .background(.white)
-                        .cornerRadius(30)
-                        .compositingGroup()
-                        .shadow(color: .gray.opacity(0.7) ,radius: 3)
-                        .padding()
-                        .alert(AppConst.Text.googleLoginFailure, isPresented: $loginViewModel.googleLoginFailureAlert) {
-                            Button {} label: { Text(AppConst.Text.ok) }
-                        } message: {
-                            Text(AppConst.Text.retry)
-                        }
+                    GoogleLoginButtonView(isTodoView: $loginViewModel.isTodoView)
                     Text(AppConst.separatorText.notRegistered)
                         .foregroundColor(.gray)
                     Button {
@@ -86,11 +48,9 @@ struct LoginView: View {
                         .compositingGroup()
                         .shadow(color: .gray.opacity(0.7) ,radius: 3)
                         .padding()
-                }
-                .navigationDestination(isPresented: $loginViewModel.isTodoView) {
+                }.navigationDestination(isPresented: $loginViewModel.isTodoView) {
                     TodoView(isTodoView: $loginViewModel.isTodoView)
-                }
-                .navigationDestination(isPresented: $isRegistrationView) {
+                }.navigationDestination(isPresented: $isRegistrationView) {
                     RegistrationView(isTodoView: $loginViewModel.isTodoView)
                 }
             }
