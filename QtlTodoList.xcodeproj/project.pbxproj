@@ -30,7 +30,12 @@
 		7599600E2A3D45C600709A6C /* UpdateTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7599600D2A3D45C600709A6C /* UpdateTodoView.swift */; };
 		759960112A3D467A00709A6C /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759960102A3D467A00709A6C /* ColorExtension.swift */; };
 		75E58ED12A4209FF0059312A /* TodoListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E58ED02A4209FF0059312A /* TodoListItemView.swift */; };
-		75EA40362A86A0F80030E241 /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA40352A86A0F80030E241 /* FirebaseError.swift */; };
+		75EA40362A86A0F80030E241 /* FirebaseErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA40352A86A0F80030E241 /* FirebaseErrorExtension.swift */; };
+		75EA40382A88D66A0030E241 /* LoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA40372A88D66A0030E241 /* LoginButtonView.swift */; };
+		75EA403B2A88D7020030E241 /* LoginButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA403A2A88D7020030E241 /* LoginButtonViewModel.swift */; };
+		75EA403E2A88DB560030E241 /* GoogleLoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA403D2A88DB560030E241 /* GoogleLoginButtonView.swift */; };
+		75EA40402A88DBA80030E241 /* GoogleLoginButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA403F2A88DBA80030E241 /* GoogleLoginButtonViewModel.swift */; };
+		75EA40442A88ED8A0030E241 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA40432A88ED8A0030E241 /* ViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,7 +64,12 @@
 		759960102A3D467A00709A6C /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		759960122A3D6C9B00709A6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		75E58ED02A4209FF0059312A /* TodoListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListItemView.swift; sourceTree = "<group>"; };
-		75EA40352A86A0F80030E241 /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
+		75EA40352A86A0F80030E241 /* FirebaseErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseErrorExtension.swift; sourceTree = "<group>"; };
+		75EA40372A88D66A0030E241 /* LoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonView.swift; sourceTree = "<group>"; };
+		75EA403A2A88D7020030E241 /* LoginButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonViewModel.swift; sourceTree = "<group>"; };
+		75EA403D2A88DB560030E241 /* GoogleLoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginButtonView.swift; sourceTree = "<group>"; };
+		75EA403F2A88DBA80030E241 /* GoogleLoginButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginButtonViewModel.swift; sourceTree = "<group>"; };
+		75EA40432A88ED8A0030E241 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		A53541DCB5A2EF66F4FD01AF /* Pods-QtlTodoList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QtlTodoList.release.xcconfig"; path = "Target Support Files/Pods-QtlTodoList/Pods-QtlTodoList.release.xcconfig"; sourceTree = "<group>"; };
 		BF442050D6D8BBDCA442D26D /* Pods-QtlTodoList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QtlTodoList.debug.xcconfig"; path = "Target Support Files/Pods-QtlTodoList/Pods-QtlTodoList.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,6 +91,8 @@
 			children = (
 				75470D672A50253800814D09 /* LoginView.swift */,
 				75470D662A50253800814D09 /* LoginViewModel.swift */,
+				75EA40392A88D66F0030E241 /* LoginButton */,
+				75EA403C2A88DB300030E241 /* GoogleLoginButton */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -167,7 +179,6 @@
 		75995FED2A3CB81200709A6C /* QtlTodoList */ = {
 			isa = PBXGroup;
 			children = (
-				75EA40342A86A0E10030E241 /* Error */,
 				75995FEE2A3CB81200709A6C /* QtlTodoListApp.swift */,
 				75470D6F2A5025D700814D09 /* AppConst */,
 				759960122A3D6C9B00709A6C /* Info.plist */,
@@ -240,7 +251,9 @@
 		7599600F2A3D464E00709A6C /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				759960102A3D467A00709A6C /* ColorExtension.swift */,
+				75EA40422A88ED710030E241 /* View */,
+				75EA40342A86A0E10030E241 /* Error */,
+				75EA40412A88ED630030E241 /* Color */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -248,9 +261,43 @@
 		75EA40342A86A0E10030E241 /* Error */ = {
 			isa = PBXGroup;
 			children = (
-				75EA40352A86A0F80030E241 /* FirebaseError.swift */,
+				75EA40352A86A0F80030E241 /* FirebaseErrorExtension.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		75EA40392A88D66F0030E241 /* LoginButton */ = {
+			isa = PBXGroup;
+			children = (
+				75EA40372A88D66A0030E241 /* LoginButtonView.swift */,
+				75EA403A2A88D7020030E241 /* LoginButtonViewModel.swift */,
+			);
+			path = LoginButton;
+			sourceTree = "<group>";
+		};
+		75EA403C2A88DB300030E241 /* GoogleLoginButton */ = {
+			isa = PBXGroup;
+			children = (
+				75EA403D2A88DB560030E241 /* GoogleLoginButtonView.swift */,
+				75EA403F2A88DBA80030E241 /* GoogleLoginButtonViewModel.swift */,
+			);
+			path = GoogleLoginButton;
+			sourceTree = "<group>";
+		};
+		75EA40412A88ED630030E241 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				759960102A3D467A00709A6C /* ColorExtension.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		75EA40422A88ED710030E241 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				75EA40432A88ED8A0030E241 /* ViewExtension.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		7E16F0470DB98FABD2C7475E /* Frameworks */ = {
@@ -389,19 +436,24 @@
 				75470D752A5026A000814D09 /* AppConst.swift in Sources */,
 				75470D6D2A50256500814D09 /* RegistrationViewModel.swift in Sources */,
 				75470D6E2A50256500814D09 /* RegistrationView.swift in Sources */,
+				75EA40442A88ED8A0030E241 /* ViewExtension.swift in Sources */,
 				75470D682A50253800814D09 /* LoginViewModel.swift in Sources */,
 				75470D692A50253800814D09 /* LoginView.swift in Sources */,
 				75995FFF2A3CC01D00709A6C /* TodoViewModel.swift in Sources */,
 				7599600C2A3D45BA00709A6C /* AddTodoView.swift in Sources */,
 				759960112A3D467A00709A6C /* ColorExtension.swift in Sources */,
-				75EA40362A86A0F80030E241 /* FirebaseError.swift in Sources */,
+				75EA40362A86A0F80030E241 /* FirebaseErrorExtension.swift in Sources */,
+				75EA40402A88DBA80030E241 /* GoogleLoginButtonViewModel.swift in Sources */,
 				7599600E2A3D45C600709A6C /* UpdateTodoView.swift in Sources */,
 				75E58ED12A4209FF0059312A /* TodoListItemView.swift in Sources */,
 				75995FF12A3CB81200709A6C /* TodoView.swift in Sources */,
+				75EA40382A88D66A0030E241 /* LoginButtonView.swift in Sources */,
+				75EA403E2A88DB560030E241 /* GoogleLoginButtonView.swift in Sources */,
 				759960052A3CC0C400709A6C /* TodoListView.swift in Sources */,
 				7558471B2A473A1B00D88B2F /* AddTodoViewModel.swift in Sources */,
 				756D69792A65AA2D0072164A /* UpdateTodoViewModel.swift in Sources */,
 				756D69772A658DB10072164A /* UpdateDeleteButtonView.swift in Sources */,
+				75EA403B2A88D7020030E241 /* LoginButtonViewModel.swift in Sources */,
 				75995FEF2A3CB81200709A6C /* QtlTodoListApp.swift in Sources */,
 				759960022A3CC07E00709A6C /* Todos.swift in Sources */,
 				759373642A610EE3001848B7 /* TodoListDetailView.swift in Sources */,
