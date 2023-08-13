@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TodoView: View {
     // MARK: - Property Wrappers
+    @Binding var isTodoView: Bool
     @StateObject private var todoViewModel = TodoViewModel()
     @StateObject private var firebaseManager = FirebaseManager.shared
 
@@ -41,6 +42,36 @@ struct TodoView: View {
                 }
             }
             .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Menu {
+                        Button(role: .destructive) {
+                            todoViewModel.isConfirmationSignOut.toggle()
+                        } label: {
+                            Text("サインアウトする").foregroundColor(Color.red)
+                        }
+                    } label: {
+                        Image(systemName: "person.fill")
+                    }
+                }
+            }.confirmationDialog("本当にサインアウトしてもよろしいですか？", isPresented: $todoViewModel.isConfirmationSignOut) {
+                Button(role: .destructive) {
+                    Task {
+                        if await todoViewModel.signOut() {
+                            isTodoView.toggle()
+                        } else {
+                            todoViewModel.isSignOutFailureAlert.toggle()
+                        }
+                    }
+                } label: {
+                    Text("サインアウトする")
+                }
+                Button(role: .cancel) {} label: { Text("キャンセル") }
+            }.alert("サインアウトに失敗しました", isPresented: $todoViewModel.isSignOutFailureAlert) {
+                Button {} label: { Text(AppConst.Text.ok) }
+            } message: {
+                Text("しばらくしてから再度お試しください")
+            }
         }
     } // body
 } // view
@@ -48,6 +79,6 @@ struct TodoView: View {
 // MARK: - Preview
 struct TodoView_Previews: PreviewProvider {
     static var previews: some View {
-        TodoView()
+        TodoView(isTodoView: .constant(false))
     }
 }
