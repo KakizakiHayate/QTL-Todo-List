@@ -35,11 +35,11 @@ struct LoginView: View {
                                 if await loginViewModel.login() {
                                     loginViewModel.isTodoView.toggle()
                                 } else {
-                                    loginViewModel.registrationFailureAlert.toggle()
+                                    loginViewModel.loginFailureAlert.toggle()
                                 }
                             }
                         } else {
-                            loginViewModel.registrationFailureAlert.toggle()
+                            loginViewModel.loginFailureAlert.toggle()
                         }
                     } label: {
                         Text(AppConst.Text.login)
@@ -48,7 +48,7 @@ struct LoginView: View {
                         .foregroundColor(.white)
                         .font(.headline)
                         .cornerRadius(30)
-                        .alert(AppConst.Text.loginFailure, isPresented: $loginViewModel.registrationFailureAlert) {
+                        .alert(loginViewModel.errorMessage, isPresented: $loginViewModel.loginFailureAlert) {
                             Button {} label: { Text(AppConst.Text.ok) }
                         } message: {
                             Text(AppConst.Text.retry)
@@ -67,7 +67,7 @@ struct LoginView: View {
                         .compositingGroup()
                         .shadow(color: .gray.opacity(0.7) ,radius: 3)
                         .padding()
-                        .alert(AppConst.Text.googleLoginFailure, isPresented: $loginViewModel.registrationFailureAlert) {
+                        .alert(AppConst.Text.googleLoginFailure, isPresented: $loginViewModel.googleLoginFailureAlert) {
                             Button {} label: { Text(AppConst.Text.ok) }
                         } message: {
                             Text(AppConst.Text.retry)
