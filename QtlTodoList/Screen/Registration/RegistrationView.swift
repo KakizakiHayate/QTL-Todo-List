@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RegistrationView: View {
     // MARK: - Property Wrappers
+    @Binding var isTodoView: Bool
     @StateObject private var registrationViewModel = RegistrationViewModel()
     
     // MARK: - body
@@ -28,7 +29,13 @@ struct RegistrationView: View {
                     if !registrationViewModel.name.isEmpty &&
                         !registrationViewModel.email.isEmpty &&
                         !registrationViewModel.password.isEmpty {
-                        registrationViewModel.registration()
+                        Task {
+                            if await registrationViewModel.registration() {
+                                isTodoView.toggle()
+                            } else {
+                                registrationViewModel.registrationFailureAlert.toggle()
+                            }
+                        }
                     } else {
                         registrationViewModel.registrationFailureAlert.toggle()
                     }
@@ -41,14 +48,14 @@ struct RegistrationView: View {
                 .font(.headline)
                 .cornerRadius(30)
                 .padding()
-                .alert(AppConst.Text.registrationFailure, isPresented: $registrationViewModel.registrationFailureAlert) {
+                .alert(registrationViewModel.errorMessage, isPresented: $registrationViewModel.registrationFailureAlert) {
                     Button {} label: { Text(AppConst.Text.ok) }
                 } message: {
                     Text(AppConst.Text.retry)
                 }
             }
             .navigationDestination(isPresented: $registrationViewModel.isTodoView) {
-                TodoView()
+                TodoView(isTodoView: $isTodoView)
             }
         }
     } // body
@@ -57,6 +64,6 @@ struct RegistrationView: View {
 // MARK: - Preview
 struct RegistrationView_Previews: PreviewProvider {
     static var previews: some View {
-        RegistrationView()
+        RegistrationView(isTodoView: .constant(false))
     }
 }
