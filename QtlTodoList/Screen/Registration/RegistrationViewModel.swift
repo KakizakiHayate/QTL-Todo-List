@@ -15,27 +15,40 @@ class RegistrationViewModel: ObservableObject {
     @Published var password = "password"
     @Published var isTodoView = false
     @Published var registrationFailureAlert = false
+    @Published var errorMessage = FirebaseAuthError.unknown.title
 }
 
 extension RegistrationViewModel {
     // MARK: - Methods
     /// 会員登録
-    func registration() {
-        Task {
-            do {
-                let result = try await Auth.auth().createUser(withEmail: email,password: password)
-                print(email)
-                let request = result.user.createProfileChangeRequest()
-                request.displayName = name
-                try await request.commitChanges()
-                try await result.user.sendEmailVerification()
-                Task { @MainActor in
-                    isTodoView.toggle()
+    func registration() async -> Bool {
+        do {
+            let result = try await Auth.auth().createUser(withEmail: email,password: password)
+            print(email)
+            let request = result.user.createProfileChangeRequest()
+            request.displayName = name
+            try await request.commitChanges()
+            try await result.user.sendEmailVerification()
+            return true
+        } catch {
+            guard let error = error as NSError? else { return false }
+            let errorCode = AuthErrorCode.Code(rawValue: error.code)
+            Task { @MainActor in
+                switch errorCode {
+                case .networkError:
+                    errorMessage = FirebaseAuthError.networkError.title
+                case .weakPassword:
+                    errorMessage = FirebaseAuthError.weakPassword.title
+                case .invalidEmail:
+                    errorMessage = FirebaseAuthError.invalidEmail.title
+                case .emailAlreadyInUse:
+                    errorMessage = FirebaseAuthError.emailAlreadyInUse.title
+                default:
+                    errorMessage = FirebaseAuthError.unknown.title
                 }
-            } catch let error {
-                registrationFailureAlert.toggle()
-                print(error.localizedDescription)
             }
+            print(error.localizedDescription)
+            return false
         }
     }
 }
