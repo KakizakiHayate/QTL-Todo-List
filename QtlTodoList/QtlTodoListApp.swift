@@ -14,11 +14,10 @@ struct QtlTodoListApp: App {
     init() {
         FirebaseApp.configure()
     }
-    
     // MARK: - body
     var body: some Scene {
         WindowGroup {
-            TodoView()
+            LoginView()
         }
     } // body
-} // App
+} // app

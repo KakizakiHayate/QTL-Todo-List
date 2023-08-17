@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TodoView: View {
     // MARK: - Property Wrappers
+    @Binding var isTodoView: Bool
     @StateObject private var todoViewModel = TodoViewModel()
     @StateObject private var firebaseManager = FirebaseManager.shared
 
@@ -22,23 +23,31 @@ struct TodoView: View {
                         Spacer()
                         HStack {
                             Spacer()
-                            Button {
-                                firebaseManager.todo = Todos(title: "", message: "")
-                                todoViewModel.isTodoAddDetails.toggle()
-                            } label: {
-                                Image(systemName: "pencil.tip.crop.circle.badge.plus")
-                                    .foregroundColor(.white)
-                                    .font(.largeTitle)
-                            }.frame(width: 70, height: 70)
-                            .background(Color.customColorEmeraldGreen)
-                            .cornerRadius(40)
-                            .padding()
-                            .sheet(isPresented: $todoViewModel.isTodoAddDetails) {
-                                AddTodoView(isTodoAddDetails: $todoViewModel.isTodoAddDetails)
-                            }
+                            TodoAddButtonView()
                         }
                     }
                 }
+            }
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Menu {
+                        TodoMenuButtonView(
+                            isConfirmationDialogAccount: $todoViewModel.isConfirmationDialogAccount,
+                            dialogTitle: $todoViewModel.dialogTitle)
+                    } label: {
+                        Image(systemName: "person.fill")
+                    }
+                }
+            }.confirmationDialog("\(AppConst.Text.really)\(todoViewModel.dialogTitle)\(AppConst.Text.confirmationPrompt)",
+                                 isPresented: $todoViewModel.isConfirmationDialogAccount) {
+                TodoConfirmationDialogButtonView(isTodoView: $isTodoView,
+                                                 isSignOutFailureAlert: $todoViewModel.isFailureAlert,
+                                                 dialogTitle: $todoViewModel.dialogTitle)
+            }.alert("\(todoViewModel.dialogTitle)\(AppConst.Text.failed)", isPresented: $todoViewModel.isFailureAlert) {
+                Button {} label: { Text(AppConst.Text.ok) }
+            } message: {
+                Text(AppConst.Text.retryMessage)
             }
         }
     } // body
@@ -47,6 +56,6 @@ struct TodoView: View {
 // MARK: - Preview
 struct TodoView_Previews: PreviewProvider {
     static var previews: some View {
-        TodoView()
+        TodoView(isTodoView: .constant(false))
     }
 }
