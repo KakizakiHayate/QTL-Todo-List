@@ -10,6 +10,7 @@ import SwiftUI
 struct RegistrationView: View {
     // MARK: - Property Wrappers
     @Binding var isTodoView: Bool
+    @Binding var isRegistrationView: Bool
     @StateObject private var registrationViewModel = RegistrationViewModel()
     
     // MARK: - body
@@ -31,6 +32,7 @@ struct RegistrationView: View {
                         !registrationViewModel.password.isEmpty {
                         Task {
                             if await registrationViewModel.registration() {
+                                isRegistrationView.toggle()
                                 isTodoView.toggle()
                             } else {
                                 registrationViewModel.registrationFailureAlert.toggle()
@@ -54,9 +56,6 @@ struct RegistrationView: View {
                     Text(AppConst.Text.retry)
                 }
             }
-            .navigationDestination(isPresented: $registrationViewModel.isTodoView) {
-                TodoView(isTodoView: $isTodoView)
-            }
         }
     } // body
 } // view
@@ -64,6 +63,7 @@ struct RegistrationView: View {
 // MARK: - Preview
 struct RegistrationView_Previews: PreviewProvider {
     static var previews: some View {
-        RegistrationView(isTodoView: .constant(false))
+        RegistrationView(isTodoView: .constant(false),
+                         isRegistrationView: .constant(false))
     }
 }
