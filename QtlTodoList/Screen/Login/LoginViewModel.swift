@@ -12,4 +12,5 @@ class LoginViewModel: ObservableObject {
     @Published var email = "test@example.com"
     @Published var password = "password"
     @Published var isTodoView = false
+    @Published var isRegistrationView = false
 }

@@ -10,7 +10,6 @@ import SwiftUI
 struct LoginView: View {
     // MARK: - Property Wrappers
     @StateObject private var loginViewModel = LoginViewModel()
-    @State private var isRegistrationView = false
     
     // MARK: Properties
     private let screenSize = UIScreen.main.bounds.height
@@ -37,7 +36,7 @@ struct LoginView: View {
                     Text(AppConst.separatorText.notRegistered)
                         .foregroundColor(.gray)
                     Button {
-                        isRegistrationView.toggle()
+                        loginViewModel.isRegistrationView.toggle()
                     } label: {
                         Text(AppConst.Text.newRegistration)
                     }.padding()
@@ -50,8 +49,8 @@ struct LoginView: View {
                         .padding()
                 }.navigationDestination(isPresented: $loginViewModel.isTodoView) {
                     TodoView(isTodoView: $loginViewModel.isTodoView)
-                }.navigationDestination(isPresented: $isRegistrationView) {
-                    RegistrationView(isTodoView: $loginViewModel.isTodoView)
+                }.navigationDestination(isPresented: $loginViewModel.isRegistrationView) {
+                    RegistrationView(isTodoView: $loginViewModel.isTodoView, isRegistrationView: $loginViewModel.isRegistrationView)
                 }
             }
         }
