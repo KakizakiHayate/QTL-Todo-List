@@ -23,20 +23,7 @@ struct TodoView: View {
                         Spacer()
                         HStack {
                             Spacer()
-                            Button {
-                                firebaseManager.todo = Todos(title: AppConst.Text.empty, message: AppConst.Text.empty)
-                                todoViewModel.isTodoAddDetails.toggle()
-                            } label: {
-                                Image(systemName: "pencil.tip.crop.circle.badge.plus")
-                                    .foregroundColor(.white)
-                                    .font(.largeTitle)
-                            }.frame(width: 70, height: 70)
-                            .background(Color.customColorEmeraldGreen)
-                            .cornerRadius(40)
-                            .padding()
-                            .sheet(isPresented: $todoViewModel.isTodoAddDetails) {
-                                AddTodoView(isTodoAddDetails: $todoViewModel.isTodoAddDetails)
-                            }
+                            TodoAddButtonView()
                         }
                     }
                 }
@@ -45,32 +32,22 @@ struct TodoView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu {
-                        Button(role: .destructive) {
-                            todoViewModel.isConfirmationSignOut.toggle()
-                        } label: {
-                            Text("サインアウトする").foregroundColor(Color.red)
-                        }
+                        TodoMenuButtonView(
+                            isConfirmationDialogAccount: $todoViewModel.isConfirmationDialogAccount,
+                            dialogTitle: $todoViewModel.dialogTitle)
                     } label: {
                         Image(systemName: "person.fill")
                     }
                 }
-            }.confirmationDialog("本当にサインアウトしてもよろしいですか？", isPresented: $todoViewModel.isConfirmationSignOut) {
-                Button(role: .destructive) {
-                    Task {
-                        if await todoViewModel.signOut() {
-                            isTodoView.toggle()
-                        } else {
-                            todoViewModel.isSignOutFailureAlert.toggle()
-                        }
-                    }
-                } label: {
-                    Text("サインアウトする")
-                }
-                Button(role: .cancel) {} label: { Text("キャンセル") }
-            }.alert("サインアウトに失敗しました", isPresented: $todoViewModel.isSignOutFailureAlert) {
+            }.confirmationDialog("\(AppConst.Text.really)\(todoViewModel.dialogTitle)\(AppConst.Text.confirmationPrompt)",
+                                 isPresented: $todoViewModel.isConfirmationDialogAccount) {
+                TodoConfirmationDialogButtonView(isTodoView: $isTodoView,
+                                                 isSignOutFailureAlert: $todoViewModel.isFailureAlert,
+                                                 dialogTitle: $todoViewModel.dialogTitle)
+            }.alert("\(todoViewModel.dialogTitle)\(AppConst.Text.failed)", isPresented: $todoViewModel.isFailureAlert) {
                 Button {} label: { Text(AppConst.Text.ok) }
             } message: {
-                Text("しばらくしてから再度お試しください")
+                Text(AppConst.Text.retryMessage)
             }
         }
     } // body
