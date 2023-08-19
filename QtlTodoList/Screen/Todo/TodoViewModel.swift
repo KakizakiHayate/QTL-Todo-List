@@ -6,8 +6,11 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 class TodoViewModel: ObservableObject {
     // MARK: - Property Wrappers
-    @Published var isTodoAddDetails = false
+    @Published var isConfirmationDialogAccount = false
+    @Published var isFailureAlert = false
+    @Published var dialogTitle = ""
 }

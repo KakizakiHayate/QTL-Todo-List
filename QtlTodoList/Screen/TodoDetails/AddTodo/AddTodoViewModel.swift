@@ -15,3 +15,10 @@ class AddTodoViewModel: ObservableObject {
     // MARK: - Properties
     let topSpacing: CGFloat = 0.08
 }
+
+extension AddTodoViewModel {
+    func inputBoxReset() {
+        title = AppConst.Text.empty
+        message = AppConst.Text.empty
+    }
+}

@@ -19,20 +19,21 @@ struct UpdateTodoView: View {
         GeometryReader { proxy in
             ScrollView {
                 VStack {
-                    Text("更新画面")
+                    Text(AppConst.Text.updateScreen)
                         .padding()
                         .font(.title)
                     Spacer()
                         .frame(height: proxy.size.height * updateTodoViewModel.topSpacing)
                     if updateTodoViewModel.isTextEmpty {
                         HStack {
-                            Text("タイトル又はメッセージが未入力です")
+                            Text(AppConst
+                                .Text.emptyTitleOrMessage)
                                 .foregroundColor(.red)
                                 .padding(.leading)
                             Spacer()
                         }
                     }
-                    TextField("入力", text: $todos.title)
+                    TextField(AppConst.Text.input, text: $todos.title)
                         .padding()
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
@@ -48,7 +49,7 @@ struct UpdateTodoView: View {
                         if todos.message.isEmpty {
                             VStack {
                                 HStack {
-                                    Text("メッセージを入力")
+                                    Text(AppConst.Text.inputMessage)
                                         .opacity(0.25)
                                         .padding()
                                     Spacer()
@@ -70,7 +71,7 @@ struct UpdateTodoView: View {
                             updateTodoViewModel.isTextEmpty.toggle()
                         }
                     } label: {
-                        Text("完了")
+                        Text(AppConst.Text.completed)
                             .foregroundColor(.white)
                             .bold()
                             .frame(width: proxy.size.width / 4)
