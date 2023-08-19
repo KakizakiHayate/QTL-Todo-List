@@ -23,7 +23,7 @@ struct RegistrationView: View {
                 TextField(AppConst.Text.inputMail, text: $registrationViewModel.email)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
-                TextField(AppConst.Text.inputPassword, text: $registrationViewModel.password)
+                SecureField(AppConst.Text.inputPassword, text: $registrationViewModel.password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 Button {

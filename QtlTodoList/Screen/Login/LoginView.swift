@@ -10,7 +10,6 @@ import SwiftUI
 struct LoginView: View {
     // MARK: - Property Wrappers
     @StateObject private var loginViewModel = LoginViewModel()
-    
     // MARK: Properties
     private let screenSize = UIScreen.main.bounds.height
     
@@ -24,7 +23,7 @@ struct LoginView: View {
                     TextField(AppConst.Text.inputMail, text: $loginViewModel.email)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
-                    TextField(AppConst.Text.inputPassword, text: $loginViewModel.password)
+                    SecureField(AppConst.Text.inputPassword, text: $loginViewModel.password)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
                     LoginButtonView(email: $loginViewModel.email,
