@@ -57,6 +57,24 @@ struct AddTodoView: View {
                             }
                         }
                     }
+                    Image(uiImage: addTodoViewModel.addImage)
+                        .resizable()
+                        .frame(width: 300, height: 300)
+                    Picker("", selection: $addTodoViewModel.selectedImageUpload) {
+                        Text("カメラを起動").tag(1)
+                        Text("ギャラリーから選択").tag(2)
+                    }
+                    .padding()
+                    .onChange(of: addTodoViewModel.selectedImageUpload) { newValue in
+                        addTodoViewModel.selectedImagePicker(selectedValue: newValue)
+                    }.sheet(isPresented: $addTodoViewModel.isLaunchCameraView) {
+                        LaunchCameraView(image: $addTodoViewModel.addImage,
+                                         isLaunchCameraView: $addTodoViewModel.isLaunchCameraView)
+                    }.sheet(isPresented: $addTodoViewModel.isLaunchGalleryView) {
+                        LaunchCameraView(image: $addTodoViewModel.addImage,
+                                         isLaunchCameraView: $addTodoViewModel.isLaunchGalleryView)
+                    }
+                    // TODO: カメラとギャラリーの権限を追加
                     Button {
                         if !addTodoViewModel.title.isEmpty && !addTodoViewModel.message.isEmpty {
                         Task {
