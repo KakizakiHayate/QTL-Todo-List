@@ -12,4 +12,5 @@ struct Todos: Identifiable {
     var id = UUID().uuidString
     var title: String
     var message: String
+    var uploadUrl: String
 }
