@@ -59,6 +59,6 @@ struct UpdateDeleteButtonView: View {
 // MARK: - Preview
 struct UpdateDeleteButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        UpdateDeleteButtonView(todos: .constant(Todos(title: "", message: "")))
+        UpdateDeleteButtonView(todos: .constant(Todos(title: "", message: "", uploadUrl: "")))
     }
 }

@@ -87,6 +87,6 @@ struct UpdateTodoView: View {
 // MARK: - Preview
 struct UpdateTodoView_Previews: PreviewProvider {
     static var previews: some View {
-        UpdateTodoView(todos: .constant(Todos(title: "", message: "")))
+        UpdateTodoView(todos: .constant(Todos(title: "", message: "", uploadUrl: "")))
     }
 }
