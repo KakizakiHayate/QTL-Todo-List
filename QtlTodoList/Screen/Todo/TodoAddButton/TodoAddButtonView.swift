@@ -15,7 +15,7 @@ struct TodoAddButtonView: View {
     // MARK: body
     var body: some View {
         Button {
-            firebaseManager.todo = Todos(title: AppConst.Text.empty, message: AppConst.Text.empty)
+            firebaseManager.todo = Todos(title: AppConst.Text.empty, message: AppConst.Text.empty, uploadUrl: AppConst.Text.empty)
             isTodoAddDetails.toggle()
         } label: {
             Image(systemName: "pencil.tip.crop.circle.badge.plus")
