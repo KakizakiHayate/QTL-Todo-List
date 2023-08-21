@@ -38,6 +38,8 @@ enum AppConst {
         static let really = "本当に"
         static let confirmationPrompt = "してもよろしいですか？"
         static let actionInfo = "する"
+        static let launchCamera = "カメラを起動"
+        static let launchGallery = "ギャラリーから選択"
     }
     enum separatorText {
         static let or = "--- または ---"
