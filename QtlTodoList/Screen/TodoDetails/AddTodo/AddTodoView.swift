@@ -62,9 +62,8 @@ struct AddTodoView: View {
                         .frame(width: 300, height: 300)
                     Picker("", selection: $addTodoViewModel.selectedImageUpload) {
                         Text(AppConst.Text.launchCamera).tag(1)
-                        Text(AppConst.Text.launchCamera).tag(2)
-                    }
-                    .padding()
+                        Text(AppConst.Text.launchGallery).tag(2)
+                    }.padding()
                     .onChange(of: addTodoViewModel.selectedImageUpload) { newValue in
                         addTodoViewModel.selectedImagePicker(selectedValue: newValue)
                         addTodoViewModel.selectedImageUpload = 0
@@ -75,27 +74,12 @@ struct AddTodoView: View {
                         LaunchGalleryView(image: $addTodoViewModel.addImage,
                                           isLaunchGalleryView: $addTodoViewModel.isLaunchGalleryView)
                     }
-                    Button {
-                        if !addTodoViewModel.title.isEmpty && !addTodoViewModel.message.isEmpty {
-                            Task {
-                                let uploadUrl = await firebaseManager.todoImageUpload(image: addTodoViewModel.addImage)
-                                await firebaseManager.createFirestoreData(title: addTodoViewModel.title,
-                                                                          message: addTodoViewModel.message,
-                                                                          imageUrl: uploadUrl)
-                                isTodoAddDetails.toggle()
-                                addTodoViewModel.inputBoxReset()
-                            }
-                        } else {
-                            addTodoViewModel.isTextEmpty = true
-                        }
-                    } label: {
-                        Text(AppConst.Text.completed)
-                            .foregroundColor(.white)
-                            .bold()
-                            .frame(width: proxy.size.width / 4)
-                    }.padding()
-                        .background(Color.customColorEmeraldGreen)
-                        .cornerRadius(40)
+                    AddTodoCompletedButtonView(proxyWidth: proxy.size.height,
+                                               title: $addTodoViewModel.title,
+                                               message: $addTodoViewModel.message,
+                                               addImage: $addTodoViewModel.addImage,
+                                               isTextEmpty: $addTodoViewModel.isTextEmpty,
+                                               isTodoAddDetails: $isTodoAddDetails)
                 }
             }
         }

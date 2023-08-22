@@ -34,6 +34,7 @@
 		7599600E2A3D45C600709A6C /* UpdateTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7599600D2A3D45C600709A6C /* UpdateTodoView.swift */; };
 		759960112A3D467A00709A6C /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759960102A3D467A00709A6C /* ColorExtension.swift */; };
 		75E58ED12A4209FF0059312A /* TodoListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E58ED02A4209FF0059312A /* TodoListItemView.swift */; };
+		75E7B1DC2A93C10900A0EE95 /* AddTodoCompletedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E7B1DB2A93C10800A0EE95 /* AddTodoCompletedButtonView.swift */; };
 		75EA40362A86A0F80030E241 /* FirebaseErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA40352A86A0F80030E241 /* FirebaseErrorExtension.swift */; };
 		75EA40382A88D66A0030E241 /* LoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA40372A88D66A0030E241 /* LoginButtonView.swift */; };
 		75EA403B2A88D7020030E241 /* LoginButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA403A2A88D7020030E241 /* LoginButtonViewModel.swift */; };
@@ -76,6 +77,7 @@
 		759960102A3D467A00709A6C /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		759960122A3D6C9B00709A6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		75E58ED02A4209FF0059312A /* TodoListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListItemView.swift; sourceTree = "<group>"; };
+		75E7B1DB2A93C10800A0EE95 /* AddTodoCompletedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoCompletedButtonView.swift; sourceTree = "<group>"; };
 		75EA40352A86A0F80030E241 /* FirebaseErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseErrorExtension.swift; sourceTree = "<group>"; };
 		75EA40372A88D66A0030E241 /* LoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonView.swift; sourceTree = "<group>"; };
 		75EA403A2A88D7020030E241 /* LoginButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonViewModel.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			children = (
 				7599600B2A3D45BA00709A6C /* AddTodoView.swift */,
 				7558471A2A473A1B00D88B2F /* AddTodoViewModel.swift */,
+				75E7B1DD2A952C8A00A0EE95 /* AddTodoCompletedButton */,
 			);
 			path = AddTodo;
 			sourceTree = "<group>";
@@ -311,6 +314,14 @@
 				75EA40412A88ED630030E241 /* Color */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		75E7B1DD2A952C8A00A0EE95 /* AddTodoCompletedButton */ = {
+			isa = PBXGroup;
+			children = (
+				75E7B1DB2A93C10800A0EE95 /* AddTodoCompletedButtonView.swift */,
+			);
+			path = AddTodoCompletedButton;
 			sourceTree = "<group>";
 		};
 		75EA40342A86A0E10030E241 /* Error */ = {
@@ -536,6 +547,7 @@
 				75EA403E2A88DB560030E241 /* GoogleLoginButtonView.swift in Sources */,
 				759960052A3CC0C400709A6C /* TodoListView.swift in Sources */,
 				7558471B2A473A1B00D88B2F /* AddTodoViewModel.swift in Sources */,
+				75E7B1DC2A93C10900A0EE95 /* AddTodoCompletedButtonView.swift in Sources */,
 				756D69792A65AA2D0072164A /* UpdateTodoViewModel.swift in Sources */,
 				756D69772A658DB10072164A /* UpdateDeleteButtonView.swift in Sources */,
 				75EA40462A88FD420030E241 /* TodoMenuButtonView.swift in Sources */,
