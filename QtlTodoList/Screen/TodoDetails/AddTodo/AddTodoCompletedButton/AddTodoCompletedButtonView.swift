@@ -16,7 +16,7 @@ struct AddTodoCompletedButtonView: View {
     @Binding var isTextEmpty: Bool
     @Binding var isTodoAddDetails: Bool
     // MARK: Properties
-    let proxyWidth: CGFloat
+    private let proxyWidth: CGFloat
     // MARK: init
     init(proxyWidth: CGFloat,
          title: Binding<String>,
@@ -64,6 +64,11 @@ struct AddTodoCompletedButtonView: View {
 //// MARK: Preview
 struct AddTodoCompletedButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        AddTodoCompletedButtonView(proxyWidth: CGFloat(32), title: .constant(""), message: .constant(""), addImage: .constant(UIImage()), isTextEmpty: .constant(false), isTodoAddDetails: .constant(false))
+        AddTodoCompletedButtonView(proxyWidth: CGFloat(32),
+                                   title: .constant(""),
+                                   message: .constant(""),
+                                   addImage: .constant(UIImage()),
+                                   isTextEmpty: .constant(false),
+                                   isTodoAddDetails: .constant(false))
     }
 }
