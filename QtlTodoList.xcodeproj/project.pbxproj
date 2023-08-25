@@ -35,6 +35,7 @@
 		759960112A3D467A00709A6C /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759960102A3D467A00709A6C /* ColorExtension.swift */; };
 		75E58ED12A4209FF0059312A /* TodoListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E58ED02A4209FF0059312A /* TodoListItemView.swift */; };
 		75E7B1DC2A93C10900A0EE95 /* AddTodoCompletedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E7B1DB2A93C10800A0EE95 /* AddTodoCompletedButtonView.swift */; };
+		75E7B1E42A98AF7B00A0EE95 /* UpdateTodoCompletedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E7B1E32A98AF7B00A0EE95 /* UpdateTodoCompletedButtonView.swift */; };
 		75EA40362A86A0F80030E241 /* FirebaseErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA40352A86A0F80030E241 /* FirebaseErrorExtension.swift */; };
 		75EA40382A88D66A0030E241 /* LoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA40372A88D66A0030E241 /* LoginButtonView.swift */; };
 		75EA403B2A88D7020030E241 /* LoginButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA403A2A88D7020030E241 /* LoginButtonViewModel.swift */; };
@@ -78,6 +79,7 @@
 		759960122A3D6C9B00709A6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		75E58ED02A4209FF0059312A /* TodoListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListItemView.swift; sourceTree = "<group>"; };
 		75E7B1DB2A93C10800A0EE95 /* AddTodoCompletedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoCompletedButtonView.swift; sourceTree = "<group>"; };
+		75E7B1E32A98AF7B00A0EE95 /* UpdateTodoCompletedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTodoCompletedButtonView.swift; sourceTree = "<group>"; };
 		75EA40352A86A0F80030E241 /* FirebaseErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseErrorExtension.swift; sourceTree = "<group>"; };
 		75EA40372A88D66A0030E241 /* LoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonView.swift; sourceTree = "<group>"; };
 		75EA403A2A88D7020030E241 /* LoginButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonViewModel.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			children = (
 				7599600D2A3D45C600709A6C /* UpdateTodoView.swift */,
 				756D69782A65AA2D0072164A /* UpdateTodoViewModel.swift */,
+				75E7B1E22A98AF4D00A0EE95 /* UpdateTodoCompletedButton */,
 			);
 			path = UpdateTodo;
 			sourceTree = "<group>";
@@ -322,6 +325,14 @@
 				75E7B1DB2A93C10800A0EE95 /* AddTodoCompletedButtonView.swift */,
 			);
 			path = AddTodoCompletedButton;
+			sourceTree = "<group>";
+		};
+		75E7B1E22A98AF4D00A0EE95 /* UpdateTodoCompletedButton */ = {
+			isa = PBXGroup;
+			children = (
+				75E7B1E32A98AF7B00A0EE95 /* UpdateTodoCompletedButtonView.swift */,
+			);
+			path = UpdateTodoCompletedButton;
 			sourceTree = "<group>";
 		};
 		75EA40342A86A0E10030E241 /* Error */ = {
@@ -524,6 +535,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				755847142A47279E00D88B2F /* FirebaseManager.swift in Sources */,
+				75E7B1E42A98AF7B00A0EE95 /* UpdateTodoCompletedButtonView.swift in Sources */,
 				75210FD12A910D97007635CF /* TodoListDetailViewModel.swift in Sources */,
 				75470D752A5026A000814D09 /* AppConst.swift in Sources */,
 				75470D6D2A50256500814D09 /* RegistrationViewModel.swift in Sources */,
