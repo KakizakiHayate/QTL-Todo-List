@@ -57,11 +57,12 @@ extension FirebaseManager {
     }
     
     /// FireStoreのデータ更新
-    func updateFirestoreData(todo: Todos) async {
+    func updateFirestoreData(todo: Todos, uploadUrl: URL?) async {
         do {
             try await self.firestore.collection("todos").document(todo.id).setData([
                 "title": todo.title,
-                "message": todo.message
+                "message": todo.message,
+                "uploadUrl": uploadUrl?.absoluteString ?? ""
             ])
         } catch {
             print(error.localizedDescription)
