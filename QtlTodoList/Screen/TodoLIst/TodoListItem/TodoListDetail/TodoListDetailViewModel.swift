@@ -9,7 +9,7 @@ import SwiftUI
 
 class TodoListDetailViewModel: ObservableObject {
     // MARK: - Property Wrappers
-    @Published var uiImage = UIImage()
+    @Published var todoImage = UIImage()
     // MARK: - Properties
     let equalSpacing: CGFloat = 2
 }
@@ -21,7 +21,7 @@ extension TodoListDetailViewModel {
         do {
             let (data, _)  = try await URLSession.shared.data(from: url)
             Task { @MainActor in
-                uiImage = UIImage(data: data) ?? UIImage()
+                todoImage = UIImage(data: data) ?? UIImage()
             }
         } catch {
             print(error.localizedDescription)

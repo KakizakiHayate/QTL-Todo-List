@@ -64,7 +64,7 @@ struct TodoListDetailView: View {
                             .padding(.horizontal)
                         Spacer()
                     }
-                    Image(uiImage: todoListDetailViewModel.uiImage)
+                    Image(uiImage: todoListDetailViewModel.todoImage)
                         .resizable()
                         .scaledToFit()
                         .frame(maxWidth: .infinity)
@@ -76,7 +76,8 @@ struct TodoListDetailView: View {
                     await todoListDetailViewModel.loadImage(uploadUrl: todos.uploadUrl)
                 }
             }
-            UpdateDeleteButtonView(todos: $todos)
+            UpdateDetailButtonView(todos: $todos,
+                                   todoImage: $todoListDetailViewModel.todoImage)
         }
     } // body
 } // view
