@@ -14,7 +14,8 @@ struct UpdateDetailButtonView: View {
     @Binding var todos: Todos
     @Binding var todoImage: UIImage
     @StateObject private var firebaseManager = FirebaseManager.shared
-
+    @Environment (\.dismiss) private var dismiss
+    
     // MARK: - body
     var body: some View {
         HStack {
@@ -47,8 +48,9 @@ struct UpdateDetailButtonView: View {
                     Button {} label: { Text(AppConst.Text.cancel) }
                     Button {
                         Task {
-                            firebaseManager.deleteFirestoreData(todo:)
+                            await firebaseManager.deleteFirestoreData(todo: todos)
                         }
+                        dismiss()
                     } label: {
                         Text(AppConst.Text.ok)
                     }
