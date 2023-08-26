@@ -96,4 +96,11 @@ extension FirebaseManager {
             return nil
         }
     }
+
+    func redraw(todos: Binding<[Todos]>) async {
+        guard let readTodos = await readFirestoreData() else {
+            return
+        }
+        todos.wrappedValue = readTodos
+    }
 }
