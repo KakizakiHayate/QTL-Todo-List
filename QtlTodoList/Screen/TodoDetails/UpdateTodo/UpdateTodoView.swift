@@ -11,8 +11,8 @@ struct UpdateTodoView: View {
     // MARK: - Property Wrappers
     @StateObject private var firebaseManager  = FirebaseManager.shared
     @StateObject private var updateTodoViewModel = UpdateTodoViewModel()
-    @Environment(\.dismiss) private var dismiss
     @Binding var todos: Todos
+    @Binding var todoImage: UIImage
 
     // MARK: - body
     var body: some View {
@@ -26,10 +26,9 @@ struct UpdateTodoView: View {
                         .frame(height: proxy.size.height * updateTodoViewModel.topSpacing)
                     if updateTodoViewModel.isTextEmpty {
                         HStack {
-                            Text(AppConst
-                                .Text.emptyTitleOrMessage)
-                                .foregroundColor(.red)
-                                .padding(.leading)
+                            Text(AppConst.Text.emptyTitleOrMessage)
+                            .foregroundColor(.red)
+                            .padding(.leading)
                             Spacer()
                         }
                     }
@@ -61,23 +60,27 @@ struct UpdateTodoView: View {
                     }
                     .padding(.top, 0)
                     .padding(.horizontal)
-                    Button {
-                        if !todos.title.isEmpty && !todos.message.isEmpty {
-                            Task {
-                                await firebaseManager.updateFirestoreData(todo: todos)
-                                dismiss()
-                            }
-                        } else {
-                            updateTodoViewModel.isTextEmpty.toggle()
-                        }
-                    } label: {
-                        Text(AppConst.Text.completed)
-                            .foregroundColor(.white)
-                            .bold()
-                            .frame(width: proxy.size.width / 4)
+                    Image(uiImage: todoImage)
+                        .resizable()
+                        .frame(width: 300, height: 300)
+                    Picker(AppConst.Text.empty, selection: $updateTodoViewModel.selectedImageUpload) {
+                        Text(AppConst.Text.launchCamera).tag(1)
+                        Text(AppConst.Text.launchGallery).tag(2)
                     }.padding()
-                        .background(Color.customColorEmeraldGreen)
-                        .cornerRadius(40)
+                        .onChange(of: updateTodoViewModel.selectedImageUpload) { newValue in
+                            updateTodoViewModel.selectedImagePicker(selectedValue: newValue)
+                            updateTodoViewModel.selectedImageUpload = 0
+                        }.sheet(isPresented: $updateTodoViewModel.isLaunchCameraView) {
+                            LaunchCameraView(image: $todoImage,
+                                             isLaunchCameraView: $updateTodoViewModel.isLaunchCameraView)
+                        }.sheet(isPresented: $updateTodoViewModel.isLaunchGalleryView) {
+                            LaunchGalleryView(image: $todoImage,
+                                              isLaunchGalleryView: $updateTodoViewModel.isLaunchGalleryView)
+                        }
+                    UpdateTodoCompletedButtonView(todos: $todos,
+                                                  todoImage: $todoImage,
+                                                  isTextEmpty: $updateTodoViewModel.isTextEmpty,
+                                                  proxyWidth: proxy.size.width)
                 }
             }
         }
@@ -87,6 +90,9 @@ struct UpdateTodoView: View {
 // MARK: - Preview
 struct UpdateTodoView_Previews: PreviewProvider {
     static var previews: some View {
-        UpdateTodoView(todos: .constant(Todos(title: "", message: "", uploadUrl: "")))
+        UpdateTodoView(todos: .constant(Todos(title: "",
+                                              message: "",
+                                              uploadUrl: "")),
+                       todoImage: .constant(UIImage()))
     }
 }
