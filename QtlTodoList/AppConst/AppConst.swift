@@ -40,6 +40,9 @@ enum AppConst {
         static let actionInfo = "する"
         static let launchCamera = "カメラを起動"
         static let launchGallery = "ギャラリーから選択"
+        static let title = "タイトル"
+        static let detail = "詳細"
+        static let photoAttached = "添付された写真"
     }
     enum separatorText {
         static let or = "--- または ---"
