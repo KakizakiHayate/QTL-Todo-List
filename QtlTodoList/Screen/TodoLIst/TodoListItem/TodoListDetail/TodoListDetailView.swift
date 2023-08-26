@@ -9,7 +9,8 @@ import SwiftUI
 
 struct TodoListDetailView: View {
     // MARK: - Property Wrappers
-    @Binding var todos: Todos
+    @Binding var todo: Todos
+    @Binding var todos: [Todos]
     @StateObject private var firebaseManager = FirebaseManager.shared
     @StateObject private var todoListDetailViewModel = TodoListDetailViewModel()
 
@@ -18,7 +19,7 @@ struct TodoListDetailView: View {
         VStack {
             ScrollView {
                 HStack {
-                    Text("タイトル")
+                    Text(AppConst.Text.title)
                         .font(.callout)
                         .foregroundColor(.customColorEmeraldGreen)
                         .bold()
@@ -26,7 +27,7 @@ struct TodoListDetailView: View {
                         .padding(.horizontal)
                     Spacer()
                 }
-                Text(todos.title)
+                Text(todo.title)
                     .font(.callout)
                     .padding()
                     .frame(maxWidth: .infinity,
@@ -36,7 +37,7 @@ struct TodoListDetailView: View {
                     .padding(.horizontal, 15)
                     .shadow(color: .gray.opacity(0.7), radius: 5)
                 HStack {
-                    Text("詳細")
+                    Text(AppConst.Text.detail)
                         .font(.callout)
                         .foregroundColor(.customColorEmeraldGreen)
                         .bold()
@@ -44,7 +45,7 @@ struct TodoListDetailView: View {
                         .padding(.horizontal)
                     Spacer()
                 }
-                Text(todos.message)
+                Text(todo.message)
                     .font(.caption)
                     .padding()
                     .frame(maxWidth: .infinity,
@@ -54,9 +55,9 @@ struct TodoListDetailView: View {
                     .cornerRadius(8)
                     .padding(.horizontal, 15)
                     .shadow(color: .gray.opacity(0.7), radius: 5)
-                if !todos.uploadUrl.isEmpty {
+                if !todo.uploadUrl.isEmpty {
                     HStack {
-                        Text("添付された画像")
+                        Text(AppConst.Text.photoAttached)
                             .font(.callout)
                             .foregroundColor(.customColorEmeraldGreen)
                             .bold()
@@ -73,10 +74,11 @@ struct TodoListDetailView: View {
                 }
             }.onAppear {
                 Task {
-                    await todoListDetailViewModel.loadImage(uploadUrl: todos.uploadUrl)
+                    await firebaseManager.redraw(todos: $todos)
+                    await todoListDetailViewModel.loadImage(uploadUrl: todo.uploadUrl)
                 }
             }
-            UpdateDetailButtonView(todos: $todos,
+            UpdateDetailButtonView(todos: $todo,
                                    todoImage: $todoListDetailViewModel.todoImage)
         }
     } // body
@@ -85,6 +87,7 @@ struct TodoListDetailView: View {
 // MARK: - Preview
 struct TodoListDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        TodoListDetailView(todos: .constant(Todos(title: "ああああ￥", message: "testt", uploadUrl: "")))
+        TodoListDetailView(todo: .constant(Todos(title: "ああああ￥", message: "testt", uploadUrl: "")),
+                           todos: .constant([]))
     }
 }
