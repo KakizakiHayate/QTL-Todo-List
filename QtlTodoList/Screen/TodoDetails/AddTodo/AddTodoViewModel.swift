@@ -22,15 +22,16 @@ class AddTodoViewModel: ObservableObject {
     let topSpacing: CGFloat = 0.08
     let storage = Storage.storage()
 
-    // MARK: Enum
+    // MARK: - Enum
     enum SelectedAddImage: Int {
         case LaunchCamera = 1
         case LaunchGallery = 2
     }
 }
 
+// MARK: - extension
 extension AddTodoViewModel {
-    // MARK: Methods
+    // MARK: - Methods
     func inputBoxReset() {
         title = AppConst.Text.empty
         message = AppConst.Text.empty

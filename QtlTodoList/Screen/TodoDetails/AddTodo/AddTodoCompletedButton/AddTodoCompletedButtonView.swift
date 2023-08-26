@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct AddTodoCompletedButtonView: View {
-    // MARK: Property Wrappers
+    // MARK: - Property Wrappers
     @StateObject private var firebaseManager = FirebaseManager.shared
     @Binding var title: String
     @Binding var message: String
     @Binding var addImage: UIImage
     @Binding var isTextEmpty: Bool
     @Binding var isTodoAddDetails: Bool
-    // MARK: Properties
+    // MARK: - Properties
     private let proxyWidth: CGFloat
-    // MARK: init
+    // MARK: - init
     init(proxyWidth: CGFloat,
          title: Binding<String>,
          message: Binding<String>,
@@ -34,7 +34,7 @@ struct AddTodoCompletedButtonView: View {
     }
 
 
-    // MARK: body
+    // MARK: - body
     var body: some View {
         Button {
             if !title.isEmpty && !message.isEmpty {
@@ -61,7 +61,7 @@ struct AddTodoCompletedButtonView: View {
     }
 }
 
-//// MARK: Preview
+// MARK: - Preview
 struct AddTodoCompletedButtonView_Previews: PreviewProvider {
     static var previews: some View {
         AddTodoCompletedButtonView(proxyWidth: CGFloat(32),

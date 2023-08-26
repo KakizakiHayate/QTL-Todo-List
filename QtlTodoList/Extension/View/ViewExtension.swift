@@ -8,8 +8,9 @@
 import Foundation
 import SwiftUI
 
+// MARK: - extension
 extension View {
-    // MARK: Methods
+    // MARK: - Methods
     func getRootViewController() -> UIViewController {
         guard let screen = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
             return .init()

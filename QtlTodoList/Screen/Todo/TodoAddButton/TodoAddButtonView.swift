@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct TodoAddButtonView: View {
-    // MARK: Property Wrappers
+    // MARK: - Property Wrappers
     @State private var isTodoAddDetails = false
     @Binding var todos: [Todos]
     @StateObject private var firebaseManager = FirebaseManager.shared
 
-    // MARK: body
+    // MARK: - body
     var body: some View {
         Button {
             firebaseManager.todo = Todos(title: AppConst.Text.empty, message: AppConst.Text.empty, uploadUrl: AppConst.Text.empty)
@@ -37,7 +37,7 @@ struct TodoAddButtonView: View {
     } // body
 } // view
 
-// MARK: Preview
+// MARK: - Preview
 struct TodoAddButtonView_Previews: PreviewProvider {
     static var previews: some View {
         TodoAddButtonView(todos: .constant([]))

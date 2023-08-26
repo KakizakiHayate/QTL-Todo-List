@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct TodoMenuButtonView: View {
-    // MARK: Property Wrappers
+    // MARK: - Property Wrappers
     @Binding var isConfirmationDialogAccount: Bool
     @Binding var dialogTitle: String
 
-    // MARK: body
+    // MARK: - body
     var body: some View {
         Button(role: .destructive) {
             isConfirmationDialogAccount.toggle()
@@ -29,7 +29,7 @@ struct TodoMenuButtonView: View {
     } // body
 } // view
 
-// MARK: Preview
+// MARK: - Preview
 struct TodoMenuButtonView_Previews: PreviewProvider {
     static var previews: some View {
         TodoMenuButtonView(isConfirmationDialogAccount: .constant(false),

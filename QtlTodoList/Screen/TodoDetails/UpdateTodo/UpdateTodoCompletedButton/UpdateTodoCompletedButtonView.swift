@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct UpdateTodoCompletedButtonView: View {
-    // MARK: Property Wrappers
+    // MARK: - Property Wrappers
     @Binding var todos: Todos
     @Binding var todoImage: UIImage
     @Binding var isTextEmpty: Bool
     @StateObject private var firebaseManager = FirebaseManager.shared
     @Environment(\.dismiss) private var dismiss
-    // MARK: Properties
+    // MARK: - Properties
     private let proxyWidth: CGFloat
-    // MARK: init
+    // MARK: - init
     init(
         todos: Binding<Todos>,
         todoImage: Binding<UIImage>,
@@ -29,7 +29,7 @@ struct UpdateTodoCompletedButtonView: View {
         self.proxyWidth = proxyWidth
     }
 
-    // MARK: body
+    // MARK: - body
     var body: some View {
         Button {
             if !todos.title.isEmpty && !todos.message.isEmpty {
@@ -52,7 +52,7 @@ struct UpdateTodoCompletedButtonView: View {
     } // body
 } // view
 
-// MARK: Preview
+// MARK: - Preview
 struct UpdateTodoCompletedButtonView_Previews: PreviewProvider {
     static var previews: some View {
         UpdateTodoCompletedButtonView(todos: .constant(Todos(title: "", message: "", uploadUrl: "")),

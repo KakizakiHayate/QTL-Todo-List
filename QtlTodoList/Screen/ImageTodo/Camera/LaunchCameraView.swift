@@ -9,15 +9,19 @@ import SwiftUI
 
 /// カメラ起動
 struct LaunchCameraView: UIViewControllerRepresentable {
-    // MARK: Property Wrappers
+    // MARK: - Property Wrappers
     @Binding var image: UIImage
     @Binding var isLaunchCameraView: Bool
 
     class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+        // MARK: - Properties
         let parent: LaunchCameraView
+        // MARK: - init
         init(parent: LaunchCameraView) {
             self.parent = parent
         }
+
+        // MARK: - Methods
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             guard let image = info[.originalImage] as? UIImage else {
                 return
@@ -28,8 +32,9 @@ struct LaunchCameraView: UIViewControllerRepresentable {
     }
 }
 
+// MARK: - extension
 extension LaunchCameraView {
-    // MARK: Methods
+    // MARK: - Methods
     func makeCoordinator() -> Coordinator { return Coordinator(parent: self) }
 
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}

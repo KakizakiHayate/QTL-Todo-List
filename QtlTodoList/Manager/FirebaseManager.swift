@@ -22,6 +22,7 @@ final class FirebaseManager: ObservableObject {
     private init() {}
 }
 
+// MARK: - extension
 extension FirebaseManager {
     // MARK: - Methods
     /// Firestoreにデータ追加

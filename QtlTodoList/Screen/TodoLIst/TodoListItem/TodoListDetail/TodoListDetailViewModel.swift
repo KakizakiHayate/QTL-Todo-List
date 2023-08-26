@@ -14,8 +14,9 @@ class TodoListDetailViewModel: ObservableObject {
     let equalSpacing: CGFloat = 2
 }
 
+// MARK: - extension
 extension TodoListDetailViewModel {
-    // MARK: Methods
+    // MARK: - Methods
     func loadImage(uploadUrl: String) async {
         guard let url = URL(string: uploadUrl) else { return }
         do {

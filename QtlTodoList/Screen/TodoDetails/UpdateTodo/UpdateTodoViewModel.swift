@@ -22,6 +22,7 @@ class UpdateTodoViewModel: ObservableObject {
     }
 }
 
+// MARK: - extension
 extension UpdateTodoViewModel {
     // MARK: - Methods
     func selectedImagePicker(selectedValue: Int) {

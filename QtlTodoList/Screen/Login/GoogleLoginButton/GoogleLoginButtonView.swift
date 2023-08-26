@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct GoogleLoginButtonView: View {
-    // MARK: Property Wrappers
+    // MARK: - Property Wrappers
     @Binding var isTodoView: Bool
     @StateObject private var googleLoginButtonViewModel = GoogleLoginButtonViewModel()
 
-    // MARK: body
+    // MARK: - body
     var body: some View {
         Button {
             googleLoginButtonViewModel.googleLogin { result in
@@ -40,7 +40,7 @@ struct GoogleLoginButtonView: View {
     } // body
 } // view
 
-// MARK: Preview
+// MARK: - Preview
 struct GoogleLoginButtonView_Previews: PreviewProvider {
     static var previews: some View {
         GoogleLoginButtonView(isTodoView: .constant(false))

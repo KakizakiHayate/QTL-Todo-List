@@ -7,8 +7,9 @@
 
 import SwiftUI
 
+// MARK: - extension
 extension UIImage {
-    // MARK: Methods
+    // MARK: - Methods
     func resizeUIImage(width: CGFloat, height: CGFloat) -> UIImage? {
         // 指定された画像の大きさのコンテキストを用意.
         UIGraphicsBeginImageContext(CGSize(width: width, height: height))

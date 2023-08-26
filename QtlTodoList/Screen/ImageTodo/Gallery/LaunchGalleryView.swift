@@ -9,16 +9,19 @@ import SwiftUI
 import PhotosUI
 
 struct LaunchGalleryView: UIViewControllerRepresentable {
-    // MARK: Property Wrappers
+    // MARK: - Property Wrappers
     @Binding var image: UIImage
     @Binding var isLaunchGalleryView: Bool
 
     class Coordinator: NSObject, UINavigationControllerDelegate, PHPickerViewControllerDelegate {
+        // MARK: - Properties
         let parent: LaunchGalleryView
+        // MARK: - init
         init(parent: LaunchGalleryView) {
             self.parent = parent
         }
 
+        // MARK: - Methods
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
             self.parent.isLaunchGalleryView = false
 
@@ -36,8 +39,9 @@ struct LaunchGalleryView: UIViewControllerRepresentable {
     }
 }
 
+// MARK: - extension
 extension LaunchGalleryView {
-    // MARK: Methods
+    // MARK: - Methods
     func makeCoordinator() -> Coordinator { Coordinator(parent: self) }
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<LaunchGalleryView>) -> PHPickerViewController {
