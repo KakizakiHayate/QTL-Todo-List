@@ -60,7 +60,7 @@ struct AddTodoView: View {
                     Image(uiImage: addTodoViewModel.addImage)
                         .resizable()
                         .frame(width: 300, height: 300)
-                    Picker("", selection: $addTodoViewModel.selectedImageUpload) {
+                    Picker(AppConst.Text.empty, selection: $addTodoViewModel.selectedImageUpload) {
                         Text(AppConst.Text.launchCamera).tag(1)
                         Text(AppConst.Text.launchGallery).tag(2)
                     }.padding()
