@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct LoginButtonView: View {
-    // MARK: Property Wrappers
+    // MARK: - Property Wrappers
     @Binding var email: String
     @Binding var password: String
     @Binding var isTodoView: Bool
     @StateObject private var loginButtonViewModel = LoginButtonViewModel()
 
-    // MARK: body
+    // MARK: - body
     var body: some View {
         Button {
             if !email.isEmpty &&
@@ -44,7 +44,7 @@ struct LoginButtonView: View {
     } // body
 } // view
 
-// MARK: Preview
+// MARK: - Preview
 struct LoginButtonView_Previews: PreviewProvider {
     static var previews: some View {
         LoginButtonView(email: .constant(""), password: .constant(""), isTodoView: .constant(false))

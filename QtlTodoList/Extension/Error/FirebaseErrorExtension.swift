@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Enum
 enum FirebaseAuthError: Error {
     case networkError
     case weakPassword
@@ -16,6 +17,7 @@ enum FirebaseAuthError: Error {
     case emailAlreadyInUse
     case unknown
 
+    // MARK: - Properties
     var title: String {
         switch self {
         case .networkError:

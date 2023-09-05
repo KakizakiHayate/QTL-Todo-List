@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct TodoConfirmationDialogButtonView: View {
-    // MARK: Property Wrappers
+    // MARK: - Property Wrappers
     @Binding var isTodoView: Bool
     @Binding var isSignOutFailureAlert: Bool
     @Binding var dialogTitle: String
     @StateObject private var todoConfirmationDialogButtonViewModel = TodoConfirmationDialogButtonViewModel()
 
-    // MARK: body
+    // MARK: - body
     var body: some View {
         Button(role: .destructive) {
             Task {
@@ -37,7 +37,7 @@ struct TodoConfirmationDialogButtonView: View {
     } // body
 } // view
 
-// MARK: Preview
+// MARK: - Preview
 struct TodoConfirmationDialogButtonView_Previews: PreviewProvider {
     static var previews: some View {
         TodoConfirmationDialogButtonView(isTodoView: .constant(false),

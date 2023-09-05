@@ -11,12 +11,13 @@ import FirebaseCore
 import FirebaseAuth
 
 class GoogleLoginButtonViewModel: ObservableObject {
-    // MARK: Property Wrappers
+    // MARK: - Property Wrappers
     @Published var isGoogleLoginFailureAlert = false
 }
 
+// MARK: - extension
 extension GoogleLoginButtonViewModel {
-    // MARK: Methods
+    // MARK: - Methods
     /// Googleログイン
     func googleLogin(completion: @escaping(Bool) -> Void) {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }

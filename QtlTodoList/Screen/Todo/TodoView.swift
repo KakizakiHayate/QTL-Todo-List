@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TodoView: View {
     // MARK: - Property Wrappers
+    @State var todos = [Todos]()
     @Binding var isTodoView: Bool
     @StateObject private var todoViewModel = TodoViewModel()
     @StateObject private var firebaseManager = FirebaseManager.shared
@@ -18,12 +19,12 @@ struct TodoView: View {
         NavigationStack {
             VStack {
                 ZStack {
-                    TodoListView()
+                    TodoListView(todos: $todos)
                     VStack {
                         Spacer()
                         HStack {
                             Spacer()
-                            TodoAddButtonView()
+                            TodoAddButtonView(todos: $todos)
                         }
                     }
                 }

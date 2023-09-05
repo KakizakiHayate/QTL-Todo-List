@@ -9,7 +9,6 @@ import SwiftUI
 
 struct TodoListItemView: View {
     // MARK: - Property Wrappers
-    @State private var isTodoUpdateDetails = false
     @ObservedObject private var firebaseManager = FirebaseManager.shared
     @Binding var todos: [Todos]
 
@@ -17,7 +16,7 @@ struct TodoListItemView: View {
     var body: some View {
         ForEach($todos) { todo in
                 NavigationLink {
-                    TodoListDetailView(todos: todo.projectedValue)
+                    TodoListDetailView(todo: todo.projectedValue, todos: $todos)
                 } label: {
                 VStack(alignment: .leading) {
                         HStack {

@@ -18,6 +18,7 @@ class RegistrationViewModel: ObservableObject {
     @Published var errorMessage = FirebaseAuthError.unknown.title
 }
 
+// MARK: - extension
 extension RegistrationViewModel {
     // MARK: - Methods
     /// 会員登録

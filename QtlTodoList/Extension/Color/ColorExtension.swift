@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// MARK: - extension
 extension Color {
     static let customColorEmeraldGreen = Color(red: 87 / 255, green: 197 / 255, blue: 182 / 255)
 }

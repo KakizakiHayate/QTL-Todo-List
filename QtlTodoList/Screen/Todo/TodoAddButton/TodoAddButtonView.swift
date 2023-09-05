@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct TodoAddButtonView: View {
-    // MARK: Property Wrappers
+    // MARK: - Property Wrappers
     @State private var isTodoAddDetails = false
+    @Binding var todos: [Todos]
     @StateObject private var firebaseManager = FirebaseManager.shared
 
-    // MARK: body
+    // MARK: - body
     var body: some View {
         Button {
-            firebaseManager.todo = Todos(title: AppConst.Text.empty, message: AppConst.Text.empty)
+            firebaseManager.todo = Todos(title: AppConst.Text.empty, message: AppConst.Text.empty, uploadUrl: AppConst.Text.empty)
             isTodoAddDetails.toggle()
         } label: {
             Image(systemName: "pencil.tip.crop.circle.badge.plus")
@@ -27,13 +28,18 @@ struct TodoAddButtonView: View {
         .padding()
         .sheet(isPresented: $isTodoAddDetails) {
             AddTodoView(isTodoAddDetails: $isTodoAddDetails)
+                .onDisappear {
+                    Task {
+                        await firebaseManager.redraw(todos: $todos)
+                    }
+                }
         }
     } // body
 } // view
 
-// MARK: Preview
+// MARK: - Preview
 struct TodoAddButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        TodoAddButtonView()
+        TodoAddButtonView(todos: .constant([]))
     }
 }

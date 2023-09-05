@@ -9,8 +9,8 @@ import SwiftUI
 
 struct TodoListView: View {
     // MARK: - Property Wrappers
+    @Binding var todos: [Todos]
     @StateObject private var firebaseManager = FirebaseManager.shared
-    @State var todos = [Todos]()
 
     // MARK: - body
     var body: some View {
@@ -19,10 +19,7 @@ struct TodoListView: View {
                 TodoListItemView(todos: $todos)
             }.onAppear {
                 Task {
-                    guard let todos = await firebaseManager.readFirestoreData() else {
-                        return
-                    }
-                    self.todos = todos
+                    await firebaseManager.redraw(todos: $todos)
                 }
             }
         }
@@ -32,6 +29,6 @@ struct TodoListView: View {
 // MARK: - Preview
 struct TodoListView_Previews: PreviewProvider {
     static var previews: some View {
-        TodoListView()
+        TodoListView(todos: .constant([]))
     }
 }

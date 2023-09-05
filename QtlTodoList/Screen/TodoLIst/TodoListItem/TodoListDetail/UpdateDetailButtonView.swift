@@ -7,13 +7,15 @@
 
 import SwiftUI
 
-struct UpdateDeleteButtonView: View {
+struct UpdateDetailButtonView: View {
     // MARK: - Property Wrrapers
     @State private var isUpdateTodoView = false
     @State private var isDeleteAlert = false
     @Binding var todos: Todos
+    @Binding var todoImage: UIImage
     @StateObject private var firebaseManager = FirebaseManager.shared
-
+    @Environment (\.dismiss) private var dismiss
+    
     // MARK: - body
     var body: some View {
         HStack {
@@ -29,7 +31,7 @@ struct UpdateDeleteButtonView: View {
                         .fill(Color.customColorEmeraldGreen)
                 ).padding()
                 .navigationDestination(isPresented: $isUpdateTodoView) {
-                    UpdateTodoView(todos: $todos)
+                    UpdateTodoView(todos: $todos, todoImage: $todoImage)
                 }
             Button {
                 isDeleteAlert.toggle()
@@ -46,8 +48,9 @@ struct UpdateDeleteButtonView: View {
                     Button {} label: { Text(AppConst.Text.cancel) }
                     Button {
                         Task {
-                            firebaseManager.deleteFirestoreData(todo:)
+                            await firebaseManager.deleteFirestoreData(todo: todos)
                         }
+                        dismiss()
                     } label: {
                         Text(AppConst.Text.ok)
                     }
@@ -57,8 +60,8 @@ struct UpdateDeleteButtonView: View {
 } // view
 
 // MARK: - Preview
-struct UpdateDeleteButtonView_Previews: PreviewProvider {
+struct UpdateDetailButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        UpdateDeleteButtonView(todos: .constant(Todos(title: "", message: "")))
+        UpdateDetailButtonView(todos: .constant(Todos(title: "", message: "", uploadUrl: "")), todoImage: .constant(UIImage()))
     }
 }

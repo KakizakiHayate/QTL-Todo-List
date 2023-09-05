@@ -57,24 +57,29 @@ struct AddTodoView: View {
                             }
                         }
                     }
-                    Button {
-                        if !addTodoViewModel.title.isEmpty && !addTodoViewModel.message.isEmpty {
-                        Task {
-                                await firebaseManager.createFirestoreData(title: addTodoViewModel.title, message: addTodoViewModel.message)
-                                isTodoAddDetails.toggle()
-                            addTodoViewModel.inputBoxReset()
-                            }
-                        } else {
-                            addTodoViewModel.isTextEmpty = true
-                        }
-                    } label: {
-                        Text(AppConst.Text.completed)
-                            .foregroundColor(.white)
-                            .bold()
-                            .frame(width: proxy.size.width / 4)
+                    Image(uiImage: addTodoViewModel.addImage)
+                        .resizable()
+                        .frame(width: 300, height: 300)
+                    Picker(AppConst.Text.empty, selection: $addTodoViewModel.selectedImageUpload) {
+                        Text(AppConst.Text.launchCamera).tag(1)
+                        Text(AppConst.Text.launchGallery).tag(2)
                     }.padding()
-                        .background(Color.customColorEmeraldGreen)
-                        .cornerRadius(40)
+                    .onChange(of: addTodoViewModel.selectedImageUpload) { newValue in
+                        addTodoViewModel.selectedImagePicker(selectedValue: newValue)
+                        addTodoViewModel.selectedImageUpload = 0
+                    }.sheet(isPresented: $addTodoViewModel.isLaunchCameraView) {
+                        LaunchCameraView(image: $addTodoViewModel.addImage,
+                                         isLaunchCameraView: $addTodoViewModel.isLaunchCameraView)
+                    }.sheet(isPresented: $addTodoViewModel.isLaunchGalleryView) {
+                        LaunchGalleryView(image: $addTodoViewModel.addImage,
+                                          isLaunchGalleryView: $addTodoViewModel.isLaunchGalleryView)
+                    }
+                    AddTodoCompletedButtonView(proxyWidth: proxy.size.height,
+                                               title: $addTodoViewModel.title,
+                                               message: $addTodoViewModel.message,
+                                               addImage: $addTodoViewModel.addImage,
+                                               isTextEmpty: $addTodoViewModel.isTextEmpty,
+                                               isTodoAddDetails: $isTodoAddDetails)
                 }
             }
         }

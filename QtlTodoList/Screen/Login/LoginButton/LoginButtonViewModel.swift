@@ -9,11 +9,12 @@ import Foundation
 import FirebaseAuth
 
 class LoginButtonViewModel: ObservableObject {
-    // MARK: Property Wrappers
+    // MARK: - Property Wrappers
     @Published var errorMessage = FirebaseAuthError.unknown.title
     @Published var loginFailureAlert = false
 }
 
+// MARK: - extension
 extension LoginButtonViewModel {
     // MARK: - Methods
     /// メールアドレス/パスワードでログイン

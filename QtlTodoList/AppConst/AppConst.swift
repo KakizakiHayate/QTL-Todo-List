@@ -7,7 +7,9 @@
 
 import Foundation
 
+// MARK: - Enum
 enum AppConst {
+    // MARK: - Enum
     enum Text {
         static let registration = "新規登録する"
         static let inputName = "名前を入力"
@@ -38,7 +40,13 @@ enum AppConst {
         static let really = "本当に"
         static let confirmationPrompt = "してもよろしいですか？"
         static let actionInfo = "する"
+        static let launchCamera = "カメラを起動"
+        static let launchGallery = "ギャラリーから選択"
+        static let title = "タイトル"
+        static let detail = "詳細"
+        static let photoAttached = "添付された写真"
     }
+    // MARK: - Enum
     enum separatorText {
         static let or = "--- または ---"
         static let notRegistered = "--- 登録されてない方はコチラ ---"

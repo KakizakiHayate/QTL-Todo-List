@@ -10,8 +10,9 @@ import FirebaseAuth
 
 class TodoConfirmationDialogButtonViewModel: ObservableObject {}
 
+// MARK: - extension
 extension TodoConfirmationDialogButtonViewModel {
-    // MARK: Methods
+    // MARK: - Methods
     func signOut() async -> Bool {
         do {
             try Auth.auth().signOut()
