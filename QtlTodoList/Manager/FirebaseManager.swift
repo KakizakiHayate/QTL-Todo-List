@@ -89,7 +89,7 @@ extension FirebaseManager {
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpg"
         do {
-            let _ = try await reference.putDataAsync(data)
+            _ = try await reference.putDataAsync(data)
             let dowloadUrl = try await reference.downloadURL()
             return dowloadUrl
         } catch {
