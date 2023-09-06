@@ -15,9 +15,7 @@ class UpdateTodoCompletedButtonViewModel: ObservableObject {
 
 extension UpdateTodoCompletedButtonViewModel {
     // MARK: - Methods
-    func imageUploadAndUpdateTodo(todoImage: UIImage,
-                                  todos: Todos
-    ) async {
+    func imageUploadAndUpdateTodo(todoImage: UIImage, todos: Todos) async {
         let uploadUrl = await firebaseManager.todoImageUpload(image: todoImage)
         await firebaseManager.updateFirestoreData(todo: todos, uploadUrl: uploadUrl)
     }

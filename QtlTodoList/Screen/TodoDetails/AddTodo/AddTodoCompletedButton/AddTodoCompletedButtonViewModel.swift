@@ -16,18 +16,14 @@ class AddTodoCompletedButtonViewModel: ObservableObject {
 // MARK: - extension
 extension AddTodoCompletedButtonViewModel {
     // MARK: - Methods
-    func uploadTodoData(addImage: UIImage,
-                        title: String,
-                        message: String
-    ) async {
+    func uploadTodoData(addImage: UIImage, title: String, message: String) async {
         let uploadUrl = await firebaseManager.todoImageUpload(image: addImage)
         await firebaseManager.createFirestoreData(title: title,
                                                   message: message,
                                                   imageUrl: uploadUrl)
     }
 
-    func clearTextField(title: Binding<String>,
-                        message: Binding<String>) {
+    func clearTextField(title: Binding<String>, message: Binding<String>) {
         title.wrappedValue = ""
         message.wrappedValue = ""
     }
