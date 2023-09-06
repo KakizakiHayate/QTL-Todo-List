@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		462FC8D2392AB7284B9AF0ED /* Pods_QtlTodoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E964B5BC5C4AFAFCE3C32F /* Pods_QtlTodoList.framework */; };
+		751893162AA8CABB00052317 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751893152AA8CABB00052317 /* AppDelegate.swift */; };
 		75210FCA2A90C50A007635CF /* LaunchCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75210FC92A90C50A007635CF /* LaunchCameraView.swift */; };
 		75210FCC2A90C53C007635CF /* LaunchGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75210FCB2A90C53C007635CF /* LaunchGalleryView.swift */; };
 		75210FCF2A90D9C8007635CF /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75210FCE2A90D9C8007635CF /* UIImageExtension.swift */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		09E964B5BC5C4AFAFCE3C32F /* Pods_QtlTodoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QtlTodoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		751893152AA8CABB00052317 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75210FC92A90C50A007635CF /* LaunchCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCameraView.swift; sourceTree = "<group>"; };
 		75210FCB2A90C53C007635CF /* LaunchGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchGalleryView.swift; sourceTree = "<group>"; };
 		75210FCE2A90D9C8007635CF /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
@@ -106,6 +108,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		751893172AA8CAC100052317 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				751893152AA8CABB00052317 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
 		75210FCD2A90D9B5007635CF /* Image */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +245,7 @@
 		75995FED2A3CB81200709A6C /* QtlTodoList */ = {
 			isa = PBXGroup;
 			children = (
+				751893172AA8CAC100052317 /* AppDelegate */,
 				75995FEE2A3CB81200709A6C /* QtlTodoListApp.swift */,
 				75470D6F2A5025D700814D09 /* AppConst */,
 				759960122A3D6C9B00709A6C /* Info.plist */,
@@ -546,6 +557,7 @@
 				75470D692A50253800814D09 /* LoginView.swift in Sources */,
 				75995FFF2A3CC01D00709A6C /* TodoViewModel.swift in Sources */,
 				7599600C2A3D45BA00709A6C /* AddTodoView.swift in Sources */,
+				751893162AA8CABB00052317 /* AppDelegate.swift in Sources */,
 				75EA40502A89074C0030E241 /* TodoAddButtonView.swift in Sources */,
 				759960112A3D467A00709A6C /* ColorExtension.swift in Sources */,
 				75EA40362A86A0F80030E241 /* FirebaseErrorExtension.swift in Sources */,
