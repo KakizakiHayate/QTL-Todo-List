@@ -10,7 +10,7 @@ import SwiftUI
 
 class AddTodoCompletedButtonViewModel: ObservableObject {
     // MARK: - Property Wrappers
-    @StateObject private var firebaseManager = FirebaseManager.shared
+    @ObservedObject private var firebaseManager = FirebaseManager.shared
 }
 
 // MARK: - extension
