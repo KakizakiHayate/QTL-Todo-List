@@ -10,6 +10,7 @@ import SwiftUI
 struct AddTodoCompletedButtonView: View {
     // MARK: - Property Wrappers
     @StateObject private var firebaseManager = FirebaseManager.shared
+    @StateObject private var vm = AddTodoCompletedButtonViewModel()
     @Binding var title: String
     @Binding var message: String
     @Binding var addImage: UIImage
@@ -37,17 +38,16 @@ struct AddTodoCompletedButtonView: View {
     // MARK: - body
     var body: some View {
         Button {
-            if !title.isEmpty && !message.isEmpty {
+            switch (title.isEmpty, message.isEmpty) {
+            case (false, false):
                 Task {
-                    let uploadUrl = await firebaseManager.todoImageUpload(image: addImage)
-                    await firebaseManager.createFirestoreData(title: title,
-                                                              message: message,
-                                                              imageUrl: uploadUrl)
-                    isTodoAddDetails.toggle()
-                    title = ""
-                    message = ""
+                    await vm.uploadTodoData(addImage: addImage,
+                                            title: title,
+                                            message: message)
                 }
-            } else {
+                isTextEmpty.toggle()
+                vm.clearTextField(title: $title, message: $message)
+            default:
                 isTextEmpty.toggle()
             }
         } label: {
