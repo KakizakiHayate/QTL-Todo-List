@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		462FC8D2392AB7284B9AF0ED /* Pods_QtlTodoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E964B5BC5C4AFAFCE3C32F /* Pods_QtlTodoList.framework */; };
+		7518930C2AA85A2700052317 /* AddTodoCompletedButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518930B2AA85A2600052317 /* AddTodoCompletedButtonViewModel.swift */; };
 		75210FCA2A90C50A007635CF /* LaunchCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75210FC92A90C50A007635CF /* LaunchCameraView.swift */; };
 		75210FCC2A90C53C007635CF /* LaunchGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75210FCB2A90C53C007635CF /* LaunchGalleryView.swift */; };
 		75210FCF2A90D9C8007635CF /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75210FCE2A90D9C8007635CF /* UIImageExtension.swift */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		09E964B5BC5C4AFAFCE3C32F /* Pods_QtlTodoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QtlTodoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7518930B2AA85A2600052317 /* AddTodoCompletedButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoCompletedButtonViewModel.swift; sourceTree = "<group>"; };
 		75210FC92A90C50A007635CF /* LaunchCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCameraView.swift; sourceTree = "<group>"; };
 		75210FCB2A90C53C007635CF /* LaunchGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchGalleryView.swift; sourceTree = "<group>"; };
 		75210FCE2A90D9C8007635CF /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				75E7B1DB2A93C10800A0EE95 /* AddTodoCompletedButtonView.swift */,
+				7518930B2AA85A2600052317 /* AddTodoCompletedButtonViewModel.swift */,
 			);
 			path = AddTodoCompletedButton;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				75E7B1E42A98AF7B00A0EE95 /* UpdateTodoCompletedButtonView.swift in Sources */,
 				75210FD12A910D97007635CF /* TodoListDetailViewModel.swift in Sources */,
 				75470D752A5026A000814D09 /* AppConst.swift in Sources */,
+				7518930C2AA85A2700052317 /* AddTodoCompletedButtonViewModel.swift in Sources */,
 				75470D6D2A50256500814D09 /* RegistrationViewModel.swift in Sources */,
 				75470D6E2A50256500814D09 /* RegistrationView.swift in Sources */,
 				75EA40442A88ED8A0030E241 /* ViewExtension.swift in Sources */,
