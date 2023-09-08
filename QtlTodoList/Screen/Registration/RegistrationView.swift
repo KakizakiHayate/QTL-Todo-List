@@ -51,7 +51,7 @@ struct RegistrationView: View {
                 .cornerRadius(30)
                 .padding()
                 .alert(registrationViewModel.errorMessage, isPresented: $registrationViewModel.registrationFailureAlert) {
-                    Button {} label: { Text(AppConst.Text.ok) }
+                    Button {} label: { Text(AppConst.Text.confirmationOk) }
                 } message: {
                     Text(AppConst.Text.retry)
                 }

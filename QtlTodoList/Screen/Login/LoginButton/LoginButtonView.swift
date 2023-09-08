@@ -37,7 +37,7 @@ struct LoginButtonView: View {
             .font(.headline)
             .cornerRadius(30)
             .alert(loginButtonViewModel.errorMessage, isPresented: $loginButtonViewModel.loginFailureAlert) {
-                Button {} label: { Text(AppConst.Text.ok) }
+                Button {} label: { Text(AppConst.Text.confirmationOk) }
             } message: {
                 Text(AppConst.Text.retry)
             }

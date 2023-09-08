@@ -46,7 +46,7 @@ struct TodoView: View {
                                                  isSignOutFailureAlert: $todoViewModel.isFailureAlert,
                                                  dialogTitle: $todoViewModel.dialogTitle)
             }.alert("\(todoViewModel.dialogTitle)\(AppConst.Text.failed)", isPresented: $todoViewModel.isFailureAlert) {
-                Button {} label: { Text(AppConst.Text.ok) }
+                Button {} label: { Text(AppConst.Text.confirmationOk) }
             } message: {
                 Text(AppConst.Text.retryMessage)
             }

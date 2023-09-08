@@ -78,7 +78,7 @@ struct UpdateTodoView: View {
                                               isLaunchGalleryView: $updateTodoViewModel.isLaunchGalleryView)
                         }
                     Toggle(isOn: $updateTodoViewModel.isNotification, label: {
-                        Text("\(AppConst.Text.notification)\(updateTodoViewModel.isNotification ? AppConst.Text.do : AppConst.Text.doNot)")
+                        Text("\(AppConst.Text.notification)\(updateTodoViewModel.isNotification ? AppConst.Text.actionToDo : AppConst.Text.noActionRequired)")
                     }).padding()
                     if updateTodoViewModel.isNotification {
                         DatePicker(AppConst.Text.selectDateAndTime,

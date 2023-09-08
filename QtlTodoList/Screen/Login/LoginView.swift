@@ -30,9 +30,9 @@ struct LoginView: View {
                                     password: $loginViewModel.password,
                                     isTodoView: $loginViewModel.isTodoView)
                     Spacer().frame(height: height / 15)
-                    Text(AppConst.separatorText.or).foregroundColor(.gray)
+                    Text(AppConst.SeparatorText.separatorOr).foregroundColor(.gray)
                     GoogleLoginButtonView(isTodoView: $loginViewModel.isTodoView)
-                    Text(AppConst.separatorText.notRegistered)
+                    Text(AppConst.SeparatorText.notRegistered)
                         .foregroundColor(.gray)
                     Button {
                         loginViewModel.isRegistrationView.toggle()

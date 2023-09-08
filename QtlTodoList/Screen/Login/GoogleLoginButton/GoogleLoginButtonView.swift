@@ -33,7 +33,7 @@ struct GoogleLoginButtonView: View {
             .shadow(color: .gray.opacity(0.7) ,radius: 3)
             .padding()
             .alert(AppConst.Text.googleLoginFailure, isPresented: $googleLoginButtonViewModel.isGoogleLoginFailureAlert) {
-                Button {} label: { Text(AppConst.Text.ok) }
+                Button {} label: { Text(AppConst.Text.confirmationOk) }
             } message: {
                 Text(AppConst.Text.retry)
             }
