@@ -45,6 +45,10 @@ enum AppConst {
         static let title = "タイトル"
         static let detail = "詳細"
         static let photoAttached = "添付された写真"
+        static let selectDateAndTime = "日時を選択"
+        static let `do` = "する"
+        static let doNot = "しない"
+        static let notification =  "通知"
     }
     // MARK: - Enum
     enum separatorText {
