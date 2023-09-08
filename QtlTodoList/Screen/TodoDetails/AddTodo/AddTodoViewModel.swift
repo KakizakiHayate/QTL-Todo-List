@@ -17,6 +17,8 @@ class AddTodoViewModel: ObservableObject {
     @Published var addImage = UIImage()
     @Published var isLaunchCameraView = false
     @Published var isLaunchGalleryView = false
+    @Published var isNotification = false
+    @Published var notificationDate = Date()
 
     // MARK: - Properties
     let topSpacing: CGFloat = 0.08
