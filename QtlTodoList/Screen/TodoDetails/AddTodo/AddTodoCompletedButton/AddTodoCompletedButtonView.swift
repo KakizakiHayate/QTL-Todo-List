@@ -44,9 +44,10 @@ struct AddTodoCompletedButtonView: View {
                     await vm.uploadTodoData(addImage: addImage,
                                             title: title,
                                             message: message)
+                    await vm.sendNotificationRequest()
+                    isTodoAddDetails.toggle()
+                    vm.clearTextField(title: $title, message: $message)
                 }
-                isTextEmpty.toggle()
-                vm.clearTextField(title: $title, message: $message)
             default:
                 isTextEmpty.toggle()
             }

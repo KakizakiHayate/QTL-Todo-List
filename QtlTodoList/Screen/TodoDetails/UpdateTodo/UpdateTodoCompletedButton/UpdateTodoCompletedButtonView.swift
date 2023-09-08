@@ -39,8 +39,8 @@ struct UpdateTodoCompletedButtonView: View {
                 Task {
                     await vm.imageUploadAndUpdateTodo(todoImage: todoImage,
                                                       todos: todos)
+                    dismiss()
                 }
-                dismiss()
             default:
                 isTextEmpty.toggle()
             }
