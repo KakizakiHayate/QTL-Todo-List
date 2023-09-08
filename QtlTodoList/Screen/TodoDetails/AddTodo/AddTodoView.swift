@@ -66,16 +66,16 @@ struct AddTodoView: View {
                         Text(AppConst.Text.launchCamera).tag(1)
                         Text(AppConst.Text.launchGallery).tag(2)
                     }.padding()
-                    .onChange(of: addTodoViewModel.selectedImageUpload) { newValue in
-                        addTodoViewModel.selectedImagePicker(selectedValue: newValue)
-                        addTodoViewModel.selectedImageUpload = 0
-                    }.sheet(isPresented: $addTodoViewModel.isLaunchCameraView) {
-                        LaunchCameraView(image: $addTodoViewModel.addImage,
-                                         isLaunchCameraView: $addTodoViewModel.isLaunchCameraView)
-                    }.sheet(isPresented: $addTodoViewModel.isLaunchGalleryView) {
-                        LaunchGalleryView(image: $addTodoViewModel.addImage,
-                                          isLaunchGalleryView: $addTodoViewModel.isLaunchGalleryView)
-                    }
+                        .onChange(of: addTodoViewModel.selectedImageUpload) { newValue in
+                            addTodoViewModel.selectedImagePicker(selectedValue: newValue)
+                            addTodoViewModel.selectedImageUpload = 0
+                        }.sheet(isPresented: $addTodoViewModel.isLaunchCameraView) {
+                            LaunchCameraView(image: $addTodoViewModel.addImage,
+                                             isLaunchCameraView: $addTodoViewModel.isLaunchCameraView)
+                        }.sheet(isPresented: $addTodoViewModel.isLaunchGalleryView) {
+                            LaunchGalleryView(image: $addTodoViewModel.addImage,
+                                              isLaunchGalleryView: $addTodoViewModel.isLaunchGalleryView)
+                        }
                     Toggle(isOn: $addTodoViewModel.isNotification, label: {
                         Text("\(AppConst.Text.notification)\(addTodoViewModel.isNotification ? AppConst.Text.do : AppConst.Text.doNot)")
                     }).padding()
