@@ -81,6 +81,9 @@ extension FirebaseManager {
     
     /// 画像アップロード
     func todoImageUpload(image: UIImage) async -> URL? {
+        guard image.size != CGSize.zero else {
+            return nil
+        }
         let reference = storage.reference().child("image/image\(UUID().uuidString).jpg")
         guard let resizedImage = image.resizeUIImage(width: image.size.width, height: image.size.height) else {
             return nil
