@@ -16,6 +16,8 @@ struct AddTodoCompletedButtonView: View {
     @Binding var addImage: UIImage
     @Binding var isTextEmpty: Bool
     @Binding var isTodoAddDetails: Bool
+    @Binding var notificationDate: Date
+    @Binding var isNotification: Bool
     // MARK: - Properties
     private let proxyWidth: CGFloat
     // MARK: - init
@@ -24,16 +26,19 @@ struct AddTodoCompletedButtonView: View {
          message: Binding<String>,
          addImage: Binding<UIImage>,
          isTextEmpty: Binding<Bool>,
-         isTodoAddDetails: Binding<Bool>
+         isTodoAddDetails: Binding<Bool>,
+         notificationDate: Binding<Date>,
+         isNotification: Binding<Bool>
     ) {
         self._title = title
         self._message = message
         self._addImage = addImage
         self._isTextEmpty = isTextEmpty
         self._isTodoAddDetails = isTodoAddDetails
+        self._notificationDate = notificationDate
+        self._isNotification = isNotification
         self.proxyWidth = proxyWidth
     }
-
 
     // MARK: - body
     var body: some View {
@@ -44,7 +49,10 @@ struct AddTodoCompletedButtonView: View {
                     await vm.uploadTodoData(addImage: addImage,
                                             title: title,
                                             message: message)
-                    await vm.sendNotificationRequest()
+                    await vm.sendNotificationRequest(notificationDate: notificationDate,
+                                                     isNotification: isNotification,
+                                                     title: title,
+                                                     message: message)
                     isTodoAddDetails.toggle()
                     vm.clearTextField(title: $title, message: $message)
                 }
@@ -70,6 +78,8 @@ struct AddTodoCompletedButtonView_Previews: PreviewProvider {
                                    message: .constant(""),
                                    addImage: .constant(UIImage()),
                                    isTextEmpty: .constant(false),
-                                   isTodoAddDetails: .constant(false))
+                                   isTodoAddDetails: .constant(false),
+                                   notificationDate: .constant(Date()),
+                                   isNotification: .constant(false))
     }
 }
