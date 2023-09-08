@@ -93,7 +93,7 @@ struct AddTodoView: View {
                                                addImage: $addTodoViewModel.addImage,
                                                isTextEmpty: $addTodoViewModel.isTextEmpty,
                                                isTodoAddDetails: $isTodoAddDetails,
-                                               notificationDate: $addTodoViewModel.notificationDate, 
+                                               notificationDate: $addTodoViewModel.notificationDate,
                                                isNotification: $addTodoViewModel.isNotification)
                 }
             }
