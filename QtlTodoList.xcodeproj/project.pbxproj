@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		462FC8D2392AB7284B9AF0ED /* Pods_QtlTodoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E964B5BC5C4AFAFCE3C32F /* Pods_QtlTodoList.framework */; };
-		751893162AA8CABB00052317 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751893152AA8CABB00052317 /* AppDelegate.swift */; };
 		7518930C2AA85A2700052317 /* AddTodoCompletedButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518930B2AA85A2600052317 /* AddTodoCompletedButtonViewModel.swift */; };
 		7518930E2AA8759700052317 /* UpdateTodoCompletedButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518930D2AA8759700052317 /* UpdateTodoCompletedButtonViewModel.swift */; };
+		751893162AA8CABB00052317 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751893152AA8CABB00052317 /* AppDelegate.swift */; };
 		75210FCA2A90C50A007635CF /* LaunchCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75210FC92A90C50A007635CF /* LaunchCameraView.swift */; };
 		75210FCC2A90C53C007635CF /* LaunchGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75210FCB2A90C53C007635CF /* LaunchGalleryView.swift */; };
 		75210FCF2A90D9C8007635CF /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75210FCE2A90D9C8007635CF /* UIImageExtension.swift */; };
@@ -53,9 +53,9 @@
 
 /* Begin PBXFileReference section */
 		09E964B5BC5C4AFAFCE3C32F /* Pods_QtlTodoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QtlTodoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		751893152AA8CABB00052317 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7518930B2AA85A2600052317 /* AddTodoCompletedButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoCompletedButtonViewModel.swift; sourceTree = "<group>"; };
 		7518930D2AA8759700052317 /* UpdateTodoCompletedButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTodoCompletedButtonViewModel.swift; sourceTree = "<group>"; };
+		751893152AA8CABB00052317 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75210FC92A90C50A007635CF /* LaunchCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCameraView.swift; sourceTree = "<group>"; };
 		75210FCB2A90C53C007635CF /* LaunchGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchGalleryView.swift; sourceTree = "<group>"; };
 		75210FCE2A90D9C8007635CF /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
@@ -249,8 +249,8 @@
 		75995FED2A3CB81200709A6C /* QtlTodoList */ = {
 			isa = PBXGroup;
 			children = (
-				751893172AA8CAC100052317 /* AppDelegate */,
 				75995FEE2A3CB81200709A6C /* QtlTodoListApp.swift */,
+				751893172AA8CAC100052317 /* AppDelegate */,
 				75470D6F2A5025D700814D09 /* AppConst */,
 				759960122A3D6C9B00709A6C /* Info.plist */,
 				7561AE932A6AF35700BC20F1 /* GoogleService-Info.plist */,
@@ -448,6 +448,7 @@
 				75995FE82A3CB81200709A6C /* Frameworks */,
 				75995FE92A3CB81200709A6C /* Resources */,
 				3F494606FD23C51281FED1FC /* [CP] Embed Pods Frameworks */,
+				753384D42AABA0070021F1C3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -521,6 +522,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QtlTodoList/Pods-QtlTodoList-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		753384D42AABA0070021F1C3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n    ${PODS_ROOT}/SwiftLint/swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		8E878EE2EFC36C88ADBE69ED /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
