@@ -27,8 +27,8 @@ struct UpdateTodoView: View {
                     if updateTodoViewModel.isTextEmpty {
                         HStack {
                             Text(AppConst.Text.emptyTitleOrMessage)
-                            .foregroundColor(.red)
-                            .padding(.leading)
+                                .foregroundColor(.red)
+                                .padding(.leading)
                             Spacer()
                         }
                     }
