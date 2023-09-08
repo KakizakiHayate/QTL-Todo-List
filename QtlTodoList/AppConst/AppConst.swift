@@ -28,7 +28,7 @@ enum AppConst {
         static let input = "入力"
         static let deleteTask = "このタスクを削除しますか？"
         static let cancel = "キャンセル"
-        static let ok = "OK"
+        static let confirmationOk = "OK"
         static let registrationFailure = "新規登録に失敗しました"
         static let retry = "入力内容を確認して再試行してください"
         static let loginFailure = "ログインに失敗しました"
@@ -46,13 +46,13 @@ enum AppConst {
         static let detail = "詳細"
         static let photoAttached = "添付された写真"
         static let selectDateAndTime = "日時を選択"
-        static let `do` = "する"
-        static let doNot = "しない"
+        static let actionToDo = "する"
+        static let noActionRequired = "しない"
         static let notification =  "通知"
     }
     // MARK: - Enum
-    enum separatorText {
-        static let or = "--- または ---"
+    enum SeparatorText {
+        static let separatorOr = "--- または ---"
         static let notRegistered = "--- 登録されてない方はコチラ ---"
     }
 }
