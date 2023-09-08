@@ -16,7 +16,7 @@ extension AppDelegate: UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         // 通知許可の取得
         let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: .alert) {
+        center.requestAuthorization(options: [.alert, .sound, .badge]) {
             guard $1 != nil else { return }
             $0 ? print("通知許可") : print("通知キャンセル")
         }
