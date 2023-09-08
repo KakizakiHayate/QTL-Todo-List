@@ -26,8 +26,8 @@ class AddTodoViewModel: ObservableObject {
 
     // MARK: - Enum
     enum SelectedAddImage: Int {
-        case LaunchCamera = 1
-        case LaunchGallery = 2
+        case launchCamera = 1
+        case launchGallery = 2
     }
 }
 
@@ -42,9 +42,9 @@ extension AddTodoViewModel {
     func selectedImagePicker(selectedValue: Int) {
         let addImage = SelectedAddImage(rawValue: selectedValue)
         switch addImage {
-        case .LaunchCamera:
+        case .launchCamera:
             isLaunchCameraView.toggle()
-        case .LaunchGallery:
+        case .launchGallery:
             isLaunchGalleryView.toggle()
         default:
             break
