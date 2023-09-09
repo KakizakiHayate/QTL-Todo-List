@@ -26,6 +26,7 @@ Pods/*
 !/Podfile.lock
 Carthage/Build/
 *.xcworkspace
+vendor/bundle
 
 ## Firebase
 GoogleService-Info.plist
