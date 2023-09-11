@@ -15,6 +15,7 @@ struct UpdateTodoCompletedButtonView: View {
     @Binding var notificationDate: Date
     @Binding var isNotification: Bool
     @StateObject private var firebaseManager = FirebaseManager.shared
+    @StateObject private var pushNotificationManager = PushNotificationManager.shared
     @StateObject private var vm = UpdateTodoCompletedButtonViewModel()
     @Environment(\.dismiss) private var dismiss
     // MARK: - Properties
@@ -45,10 +46,10 @@ struct UpdateTodoCompletedButtonView: View {
                 Task {
                     await vm.imageUploadAndUpdateTodo(todoImage: todoImage,
                                                       todos: todos)
-                    await vm.sendNotificationRequest(notificationDate: notificationDate,
-                                                     isNotification: isNotification,
-                                                     title: todos.title,
-                                                     message: todos.message)
+                    await pushNotificationManager.sendNotificationRequest(notificationDate: notificationDate,
+                                                                          isNotification: isNotification,
+                                                                          title: todos.title,
+                                                                          message: todos.message)
                     dismiss()
                 }
             default:

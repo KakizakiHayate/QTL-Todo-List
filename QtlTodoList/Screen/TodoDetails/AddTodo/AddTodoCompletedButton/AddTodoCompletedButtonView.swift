@@ -10,6 +10,7 @@ import SwiftUI
 struct AddTodoCompletedButtonView: View {
     // MARK: - Property Wrappers
     @StateObject private var firebaseManager = FirebaseManager.shared
+    @StateObject private var pushNotificationManager = PushNotificationManager.shared
     @StateObject private var vm = AddTodoCompletedButtonViewModel()
     @Binding var title: String
     @Binding var message: String
@@ -49,10 +50,10 @@ struct AddTodoCompletedButtonView: View {
                     await vm.uploadTodoData(addImage: addImage,
                                             title: title,
                                             message: message)
-                    await vm.sendNotificationRequest(notificationDate: notificationDate,
-                                                     isNotification: isNotification,
-                                                     title: title,
-                                                     message: message)
+                    await pushNotificationManager.sendNotificationRequest(notificationDate: notificationDate,
+                                                                          isNotification: isNotification,
+                                                                          title: title,
+                                                                          message: message)
                     isTodoAddDetails.toggle()
                     vm.clearTextField(title: $title, message: $message)
                 }
