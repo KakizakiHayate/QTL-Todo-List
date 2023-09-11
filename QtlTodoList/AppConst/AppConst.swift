@@ -51,4 +51,8 @@ enum AppConst {
         static let or = "--- または ---"
         static let notRegistered = "--- 登録されてない方はコチラ ---"
     }
+    // MARK: - Error
+    enum Error {
+        static let uploadingFile = "Error while uploading file: "
+    }
 }

@@ -93,7 +93,7 @@ extension FirebaseManager {
             let dowloadUrl = try await reference.downloadURL()
             return dowloadUrl
         } catch {
-            print("Error while uploading file: ", error)
+            print("\(AppConst.Error.uploadingFile)", error)
             return nil
         }
     }
