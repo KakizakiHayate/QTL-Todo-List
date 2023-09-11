@@ -43,7 +43,7 @@ struct LaunchGalleryView: UIViewControllerRepresentable {
 extension LaunchGalleryView {
     // MARK: - Methods
     func makeCoordinator() -> Coordinator { Coordinator(parent: self) }
-    
+
     func makeUIViewController(context: UIViewControllerRepresentableContext<LaunchGalleryView>) -> PHPickerViewController {
         var configuration = PHPickerConfiguration()
 
