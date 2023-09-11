@@ -56,7 +56,7 @@ extension FirebaseManager {
             return nil
         }
     }
-    
+
     /// FireStoreのデータ更新
     func updateFirestoreData(todo: Todos, uploadUrl: URL?) async {
         do {
@@ -69,7 +69,7 @@ extension FirebaseManager {
             print(error.localizedDescription)
         }
     }
-    
+
     /// Firestoreのデータ削除
     func deleteFirestoreData(todo: Todos) async {
         do {
