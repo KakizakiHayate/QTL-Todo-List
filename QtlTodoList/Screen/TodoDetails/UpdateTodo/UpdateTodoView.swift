@@ -31,6 +31,8 @@ struct UpdateTodoView: View {
                                 .padding(.leading)
                             Spacer()
                         }
+                    } else {
+                        // 処理しない
                     }
                     TextField(AppConst.Text.input, text: $todos.title)
                         .padding()
@@ -56,6 +58,8 @@ struct UpdateTodoView: View {
                                     .padding(.top, 10)
                                 Spacer()
                             }
+                        } else {
+                            // 処理しない
                         }
                     }
                     .padding(.top, 0)
@@ -87,6 +91,8 @@ struct UpdateTodoView: View {
                         .environment(\.calendar, Calendar(identifier: .japanese))
                         .padding()
                         .padding(.bottom, 32)
+                    } else {
+                        // 処理しない
                     }
                     UpdateTodoCompletedButtonView(todos: $todos,
                                                   todoImage: $todoImage,

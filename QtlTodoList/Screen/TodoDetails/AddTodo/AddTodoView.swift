@@ -30,6 +30,8 @@ struct AddTodoView: View {
                                 .padding(.leading)
                             Spacer()
                         }
+                    } else {
+                        // 処理しない
                     }
                     TextField(AppConst.Text.inputTitle, text: $addTodoViewModel.title)
                         .padding()
@@ -55,12 +57,16 @@ struct AddTodoView: View {
                                     .padding(.top, 10)
                                 Spacer()
                             }
+                        } else {
+                            // 処理しない
                         }
                     }
                     if addTodoViewModel.addImage.size != .zero {
                         Image(uiImage: addTodoViewModel.addImage)
                             .resizable()
                             .frame(width: 300, height: 300)
+                    } else {
+                        // 処理しない
                     }
                     Picker(AppConst.Text.empty, selection: $addTodoViewModel.selectedImageUpload) {
                         Text(AppConst.Text.launchCamera).tag(1)
@@ -86,6 +92,8 @@ struct AddTodoView: View {
                         .environment(\.calendar, Calendar(identifier: .japanese))
                         .padding()
                         .padding(.bottom, 32)
+                    } else {
+                        // 処理しない
                     }
                     AddTodoCompletedButtonView(proxyWidth: proxy.size.height,
                                                title: $addTodoViewModel.title,
