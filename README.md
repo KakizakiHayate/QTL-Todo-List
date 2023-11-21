@@ -42,7 +42,7 @@ splash
 ## 構成
 - UIの実装: SwiftUI
 - アーキテクチャ: MVVM
-- ブランチモデル: Github flow
+- ブランチモデル: Git-flow
 
 ## 開発環境
 - Xcode: 15.0(Swift 5.9)
