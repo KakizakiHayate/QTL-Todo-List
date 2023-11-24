@@ -13,6 +13,7 @@ struct UpdateTodoCompletedButtonView: View {
     @Binding var todoImage: UIImage
     @Binding var isTextEmpty: Bool
     @StateObject private var firebaseManager = FirebaseManager.shared
+    @StateObject private var vm = UpdateTodoCompletedButtonViewModel()
     @Environment(\.dismiss) private var dismiss
     // MARK: - Properties
     private let proxyWidth: CGFloat
@@ -32,13 +33,15 @@ struct UpdateTodoCompletedButtonView: View {
     // MARK: - body
     var body: some View {
         Button {
-            if !todos.title.isEmpty && !todos.message.isEmpty {
+            switch (todos.title.isEmpty,
+                    todos.message.isEmpty) {
+            case (false, false):
                 Task {
-                    let uploadUrl = await firebaseManager.todoImageUpload(image: todoImage)
-                    await firebaseManager.updateFirestoreData(todo: todos, uploadUrl: uploadUrl)
-                    dismiss()
+                    await vm.imageUploadAndUpdateTodo(todoImage: todoImage,
+                                                      todos: todos)
                 }
-            } else {
+                dismiss()
+            default:
                 isTextEmpty.toggle()
             }
         } label: {

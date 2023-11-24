@@ -13,21 +13,12 @@ struct LaunchCameraView: UIViewControllerRepresentable {
     @Binding var image: UIImage
     @Binding var isLaunchCameraView: Bool
 
-    class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    class Coordinator: NSObject {
         // MARK: - Properties
         let parent: LaunchCameraView
         // MARK: - init
         init(parent: LaunchCameraView) {
             self.parent = parent
-        }
-
-        // MARK: - Methods
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            guard let image = info[.originalImage] as? UIImage else {
-                return
-            }
-            self.parent.image = image
-            self.parent.isLaunchCameraView = false
         }
     }
 }
@@ -48,3 +39,17 @@ extension LaunchCameraView {
         return controller
     }
 }
+
+// MARK: - Coordinator
+extension LaunchCameraView.Coordinator: UIImagePickerControllerDelegate {
+    // MARK: - Methods
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.originalImage] as? UIImage else {
+            return
+        }
+        self.parent.image = image
+        self.parent.isLaunchCameraView = false
+    }
+}
+
+extension LaunchCameraView.Coordinator: UINavigationControllerDelegate {}

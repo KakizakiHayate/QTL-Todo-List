@@ -13,28 +13,12 @@ struct LaunchGalleryView: UIViewControllerRepresentable {
     @Binding var image: UIImage
     @Binding var isLaunchGalleryView: Bool
 
-    class Coordinator: NSObject, UINavigationControllerDelegate, PHPickerViewControllerDelegate {
+    class Coordinator: NSObject {
         // MARK: - Properties
         let parent: LaunchGalleryView
         // MARK: - init
         init(parent: LaunchGalleryView) {
             self.parent = parent
-        }
-
-        // MARK: - Methods
-        func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-            self.parent.isLaunchGalleryView = false
-
-            if let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
-                itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, _ in
-                    guard let image = image as? UIImage else {
-                        return
-                    }
-                    Task { @MainActor in
-                        self?.parent.image = image
-                    }
-                }
-            }
         }
     }
 }
@@ -58,3 +42,18 @@ extension LaunchGalleryView {
                                 context: UIViewControllerRepresentableContext<LaunchGalleryView>) {}
 }
 
+extension LaunchGalleryView.Coordinator: PHPickerViewControllerDelegate {
+    // MARK: - Methods
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        self.parent.isLaunchGalleryView = false
+
+        guard let itemProvider = results.first?.itemProvider else { return }
+        guard itemProvider.canLoadObject(ofClass: UIImage.self) else { return }
+        itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, _ in
+            guard let image = image as? UIImage else { return }
+            Task { @MainActor in
+                self?.parent.image = image
+            }
+        }
+    }
+}
