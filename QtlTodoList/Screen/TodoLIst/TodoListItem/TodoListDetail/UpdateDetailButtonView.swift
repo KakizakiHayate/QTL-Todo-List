@@ -52,7 +52,7 @@ struct UpdateDetailButtonView: View {
                         }
                         dismiss()
                     } label: {
-                        Text(AppConst.Text.ok)
+                        Text(AppConst.Text.confirmationOk)
                     }
                 }
         }

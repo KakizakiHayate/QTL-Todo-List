@@ -27,8 +27,8 @@ struct UpdateTodoView: View {
                     if updateTodoViewModel.isTextEmpty {
                         HStack {
                             Text(AppConst.Text.emptyTitleOrMessage)
-                            .foregroundColor(.red)
-                            .padding(.leading)
+                                .foregroundColor(.red)
+                                .padding(.leading)
                             Spacer()
                         }
                     }
@@ -77,9 +77,22 @@ struct UpdateTodoView: View {
                             LaunchGalleryView(image: $todoImage,
                                               isLaunchGalleryView: $updateTodoViewModel.isLaunchGalleryView)
                         }
+                    Toggle(isOn: $updateTodoViewModel.isNotification, label: {
+                        Text("\(AppConst.Text.notification)\(updateTodoViewModel.isNotification ? AppConst.Text.actionToDo : AppConst.Text.noActionRequired)")
+                    }).padding()
+                    if updateTodoViewModel.isNotification {
+                        DatePicker(AppConst.Text.selectDateAndTime,
+                                   selection: $updateTodoViewModel.notificationDate)
+                        .environment(\.locale, Locale(identifier: "ja_JP"))
+                        .environment(\.calendar, Calendar(identifier: .japanese))
+                        .padding()
+                        .padding(.bottom, 32)
+                    }
                     UpdateTodoCompletedButtonView(todos: $todos,
                                                   todoImage: $todoImage,
                                                   isTextEmpty: $updateTodoViewModel.isTextEmpty,
+                                                  notificationDate: $updateTodoViewModel.notificationDate,
+                                                  isNotification: $updateTodoViewModel.isNotification,
                                                   proxyWidth: proxy.size.width)
                 }
             }

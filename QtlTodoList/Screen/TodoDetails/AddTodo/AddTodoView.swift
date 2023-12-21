@@ -57,29 +57,44 @@ struct AddTodoView: View {
                             }
                         }
                     }
-                    Image(uiImage: addTodoViewModel.addImage)
-                        .resizable()
-                        .frame(width: 300, height: 300)
+                    if addTodoViewModel.addImage.size != .zero {
+                        Image(uiImage: addTodoViewModel.addImage)
+                            .resizable()
+                            .frame(width: 300, height: 300)
+                    }
                     Picker(AppConst.Text.empty, selection: $addTodoViewModel.selectedImageUpload) {
                         Text(AppConst.Text.launchCamera).tag(1)
                         Text(AppConst.Text.launchGallery).tag(2)
                     }.padding()
-                    .onChange(of: addTodoViewModel.selectedImageUpload) { newValue in
-                        addTodoViewModel.selectedImagePicker(selectedValue: newValue)
-                        addTodoViewModel.selectedImageUpload = 0
-                    }.sheet(isPresented: $addTodoViewModel.isLaunchCameraView) {
-                        LaunchCameraView(image: $addTodoViewModel.addImage,
-                                         isLaunchCameraView: $addTodoViewModel.isLaunchCameraView)
-                    }.sheet(isPresented: $addTodoViewModel.isLaunchGalleryView) {
-                        LaunchGalleryView(image: $addTodoViewModel.addImage,
-                                          isLaunchGalleryView: $addTodoViewModel.isLaunchGalleryView)
+                        .onChange(of: addTodoViewModel.selectedImageUpload) { newValue in
+                            addTodoViewModel.selectedImagePicker(selectedValue: newValue)
+                            addTodoViewModel.selectedImageUpload = 0
+                        }.sheet(isPresented: $addTodoViewModel.isLaunchCameraView) {
+                            LaunchCameraView(image: $addTodoViewModel.addImage,
+                                             isLaunchCameraView: $addTodoViewModel.isLaunchCameraView)
+                        }.sheet(isPresented: $addTodoViewModel.isLaunchGalleryView) {
+                            LaunchGalleryView(image: $addTodoViewModel.addImage,
+                                              isLaunchGalleryView: $addTodoViewModel.isLaunchGalleryView)
+                        }
+                    Toggle(isOn: $addTodoViewModel.isNotification, label: {
+                        Text("\(AppConst.Text.notification)\(addTodoViewModel.isNotification ? AppConst.Text.actionToDo : AppConst.Text.noActionRequired)")
+                    }).padding()
+                    if addTodoViewModel.isNotification {
+                        DatePicker(AppConst.Text.selectDateAndTime,
+                                   selection: $addTodoViewModel.notificationDate)
+                        .environment(\.locale, Locale(identifier: "ja_JP"))
+                        .environment(\.calendar, Calendar(identifier: .japanese))
+                        .padding()
+                        .padding(.bottom, 32)
                     }
                     AddTodoCompletedButtonView(proxyWidth: proxy.size.height,
                                                title: $addTodoViewModel.title,
                                                message: $addTodoViewModel.message,
                                                addImage: $addTodoViewModel.addImage,
                                                isTextEmpty: $addTodoViewModel.isTextEmpty,
-                                               isTodoAddDetails: $isTodoAddDetails)
+                                               isTodoAddDetails: $isTodoAddDetails,
+                                               notificationDate: $addTodoViewModel.notificationDate,
+                                               isNotification: $addTodoViewModel.isNotification)
                 }
             }
         }

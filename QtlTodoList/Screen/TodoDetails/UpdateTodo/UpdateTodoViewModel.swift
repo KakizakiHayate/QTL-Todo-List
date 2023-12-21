@@ -13,12 +13,14 @@ class UpdateTodoViewModel: ObservableObject {
     @Published var selectedImageUpload = 0
     @Published var isLaunchCameraView = false
     @Published var isLaunchGalleryView = false
+    @Published var isNotification = false
+    @Published var notificationDate = Date()
     // MARK: - Properties
     let topSpacing: CGFloat = 0.08
     // MARK: - Enum
     enum SelectedAddImage: Int {
-        case LaunchCamera = 1
-        case LaunchGallery = 2
+        case launchCamera = 1
+        case launchGallery = 2
     }
 }
 
@@ -28,9 +30,9 @@ extension UpdateTodoViewModel {
     func selectedImagePicker(selectedValue: Int) {
         let addImage = SelectedAddImage(rawValue: selectedValue)
         switch addImage {
-        case .LaunchCamera:
+        case .launchCamera:
             isLaunchCameraView.toggle()
-        case .LaunchGallery:
+        case .launchGallery:
             isLaunchGalleryView.toggle()
         default:
             break

@@ -14,4 +14,5 @@ target 'QtlTodoList' do
   pod 'GoogleSignIn'
   pod 'FirebaseFirestoreSwift'
   pod 'FirebaseStorage'
+  pod 'SwiftLint'
 end

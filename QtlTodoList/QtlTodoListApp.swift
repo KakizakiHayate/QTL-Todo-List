@@ -10,10 +10,13 @@ import FirebaseCore
 
 @main
 struct QtlTodoListApp: App {
+    // MARK: - Property Wrappers
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     // MARK: - init
     init() {
         FirebaseApp.configure()
     }
+    
     // MARK: - body
     var body: some Scene {
         WindowGroup {
