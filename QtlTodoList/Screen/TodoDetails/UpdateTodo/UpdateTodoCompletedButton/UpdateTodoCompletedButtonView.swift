@@ -12,7 +12,11 @@ struct UpdateTodoCompletedButtonView: View {
     @Binding var todos: Todos
     @Binding var todoImage: UIImage
     @Binding var isTextEmpty: Bool
+    @Binding var notificationDate: Date
+    @Binding var isNotification: Bool
     @StateObject private var firebaseManager = FirebaseManager.shared
+    @StateObject private var pushNotificationManager = PushNotificationManager.shared
+    @StateObject private var vm = UpdateTodoCompletedButtonViewModel()
     @Environment(\.dismiss) private var dismiss
     // MARK: - Properties
     private let proxyWidth: CGFloat
@@ -21,24 +25,34 @@ struct UpdateTodoCompletedButtonView: View {
         todos: Binding<Todos>,
         todoImage: Binding<UIImage>,
         isTextEmpty: Binding<Bool>,
+        notificationDate: Binding<Date>,
+        isNotification: Binding<Bool>,
         proxyWidth: CGFloat
     ) {
         self._todos = todos
         self._todoImage = todoImage
         self._isTextEmpty = isTextEmpty
+        self._notificationDate = notificationDate
+        self._isNotification = isNotification
         self.proxyWidth = proxyWidth
     }
 
     // MARK: - body
     var body: some View {
         Button {
-            if !todos.title.isEmpty && !todos.message.isEmpty {
+            switch (todos.title.isEmpty,
+                    todos.message.isEmpty) {
+            case (false, false):
                 Task {
-                    let uploadUrl = await firebaseManager.todoImageUpload(image: todoImage)
-                    await firebaseManager.updateFirestoreData(todo: todos, uploadUrl: uploadUrl)
+                    await vm.imageUploadAndUpdateTodo(todoImage: todoImage,
+                                                      todos: todos)
+                    await pushNotificationManager.sendNotificationRequest(notificationDate: notificationDate,
+                                                                          isNotification: isNotification,
+                                                                          title: todos.title,
+                                                                          message: todos.message)
                     dismiss()
                 }
-            } else {
+            default:
                 isTextEmpty.toggle()
             }
         } label: {
@@ -55,9 +69,13 @@ struct UpdateTodoCompletedButtonView: View {
 // MARK: - Preview
 struct UpdateTodoCompletedButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        UpdateTodoCompletedButtonView(todos: .constant(Todos(title: "", message: "", uploadUrl: "")),
+        UpdateTodoCompletedButtonView(todos: .constant(Todos(title: "",
+                                                             message: "",
+                                                             uploadUrl: "")),
                                       todoImage: .constant(UIImage()),
                                       isTextEmpty: .constant(false),
+                                      notificationDate: .constant(Date()),
+                                      isNotification: .constant(false),
                                       proxyWidth: 0)
     }
 }

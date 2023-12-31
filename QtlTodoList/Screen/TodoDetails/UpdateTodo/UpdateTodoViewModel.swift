@@ -13,6 +13,8 @@ class UpdateTodoViewModel: ObservableObject {
     @Published var selectedImageUpload = 0
     @Published var isLaunchCameraView = false
     @Published var isLaunchGalleryView = false
+    @Published var isNotification = false
+    @Published var notificationDate = Date()
     // MARK: - Properties
     let topSpacing: CGFloat = 0.08
     // MARK: - Enum

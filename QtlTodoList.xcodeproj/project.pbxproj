@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		462FC8D2392AB7284B9AF0ED /* Pods_QtlTodoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E964B5BC5C4AFAFCE3C32F /* Pods_QtlTodoList.framework */; };
+		7518930C2AA85A2700052317 /* AddTodoCompletedButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518930B2AA85A2600052317 /* AddTodoCompletedButtonViewModel.swift */; };
+		7518930E2AA8759700052317 /* UpdateTodoCompletedButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518930D2AA8759700052317 /* UpdateTodoCompletedButtonViewModel.swift */; };
+		751893162AA8CABB00052317 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751893152AA8CABB00052317 /* AppDelegate.swift */; };
 		75210FCA2A90C50A007635CF /* LaunchCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75210FC92A90C50A007635CF /* LaunchCameraView.swift */; };
 		75210FCC2A90C53C007635CF /* LaunchGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75210FCB2A90C53C007635CF /* LaunchGalleryView.swift */; };
 		75210FCF2A90D9C8007635CF /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75210FCE2A90D9C8007635CF /* UIImageExtension.swift */; };
@@ -46,10 +49,14 @@
 		75EA404C2A8904280030E241 /* TodoConfirmationDialogButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA404B2A8904280030E241 /* TodoConfirmationDialogButtonView.swift */; };
 		75EA404E2A8904550030E241 /* TodoConfirmationDialogButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA404D2A8904550030E241 /* TodoConfirmationDialogButtonViewModel.swift */; };
 		75EA40502A89074C0030E241 /* TodoAddButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA404F2A89074C0030E241 /* TodoAddButtonView.swift */; };
+		75EF34922AAEFF45005BF3F6 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EF34912AAEFF45005BF3F6 /* PushNotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		09E964B5BC5C4AFAFCE3C32F /* Pods_QtlTodoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QtlTodoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7518930B2AA85A2600052317 /* AddTodoCompletedButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoCompletedButtonViewModel.swift; sourceTree = "<group>"; };
+		7518930D2AA8759700052317 /* UpdateTodoCompletedButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTodoCompletedButtonViewModel.swift; sourceTree = "<group>"; };
+		751893152AA8CABB00052317 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75210FC92A90C50A007635CF /* LaunchCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCameraView.swift; sourceTree = "<group>"; };
 		75210FCB2A90C53C007635CF /* LaunchGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchGalleryView.swift; sourceTree = "<group>"; };
 		75210FCE2A90D9C8007635CF /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
@@ -90,6 +97,7 @@
 		75EA404B2A8904280030E241 /* TodoConfirmationDialogButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoConfirmationDialogButtonView.swift; sourceTree = "<group>"; };
 		75EA404D2A8904550030E241 /* TodoConfirmationDialogButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoConfirmationDialogButtonViewModel.swift; sourceTree = "<group>"; };
 		75EA404F2A89074C0030E241 /* TodoAddButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAddButtonView.swift; sourceTree = "<group>"; };
+		75EF34912AAEFF45005BF3F6 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		A53541DCB5A2EF66F4FD01AF /* Pods-QtlTodoList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QtlTodoList.release.xcconfig"; path = "Target Support Files/Pods-QtlTodoList/Pods-QtlTodoList.release.xcconfig"; sourceTree = "<group>"; };
 		BF442050D6D8BBDCA442D26D /* Pods-QtlTodoList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QtlTodoList.debug.xcconfig"; path = "Target Support Files/Pods-QtlTodoList/Pods-QtlTodoList.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,6 +114,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		751893172AA8CAC100052317 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				751893152AA8CABB00052317 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
 		75210FCD2A90D9B5007635CF /* Image */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				755847132A47279E00D88B2F /* FirebaseManager.swift */,
+				75EF34912AAEFF45005BF3F6 /* PushNotificationManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -235,6 +252,7 @@
 		75995FED2A3CB81200709A6C /* QtlTodoList */ = {
 			isa = PBXGroup;
 			children = (
+				751893172AA8CAC100052317 /* AppDelegate */,
 				75995FEE2A3CB81200709A6C /* QtlTodoListApp.swift */,
 				75470D6F2A5025D700814D09 /* AppConst */,
 				759960122A3D6C9B00709A6C /* Info.plist */,
@@ -323,6 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				75E7B1DB2A93C10800A0EE95 /* AddTodoCompletedButtonView.swift */,
+				7518930B2AA85A2600052317 /* AddTodoCompletedButtonViewModel.swift */,
 			);
 			path = AddTodoCompletedButton;
 			sourceTree = "<group>";
@@ -331,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				75E7B1E32A98AF7B00A0EE95 /* UpdateTodoCompletedButtonView.swift */,
+				7518930D2AA8759700052317 /* UpdateTodoCompletedButtonViewModel.swift */,
 			);
 			path = UpdateTodoCompletedButton;
 			sourceTree = "<group>";
@@ -538,7 +558,9 @@
 				75E7B1E42A98AF7B00A0EE95 /* UpdateTodoCompletedButtonView.swift in Sources */,
 				75210FD12A910D97007635CF /* TodoListDetailViewModel.swift in Sources */,
 				75470D752A5026A000814D09 /* AppConst.swift in Sources */,
+				7518930C2AA85A2700052317 /* AddTodoCompletedButtonViewModel.swift in Sources */,
 				75470D6D2A50256500814D09 /* RegistrationViewModel.swift in Sources */,
+				7518930E2AA8759700052317 /* UpdateTodoCompletedButtonViewModel.swift in Sources */,
 				75470D6E2A50256500814D09 /* RegistrationView.swift in Sources */,
 				75EA40442A88ED8A0030E241 /* ViewExtension.swift in Sources */,
 				75EA404E2A8904550030E241 /* TodoConfirmationDialogButtonViewModel.swift in Sources */,
@@ -546,6 +568,8 @@
 				75470D692A50253800814D09 /* LoginView.swift in Sources */,
 				75995FFF2A3CC01D00709A6C /* TodoViewModel.swift in Sources */,
 				7599600C2A3D45BA00709A6C /* AddTodoView.swift in Sources */,
+				751893162AA8CABB00052317 /* AppDelegate.swift in Sources */,
+				75EF34922AAEFF45005BF3F6 /* PushNotificationManager.swift in Sources */,
 				75EA40502A89074C0030E241 /* TodoAddButtonView.swift in Sources */,
 				759960112A3D467A00709A6C /* ColorExtension.swift in Sources */,
 				75EA40362A86A0F80030E241 /* FirebaseErrorExtension.swift in Sources */,
